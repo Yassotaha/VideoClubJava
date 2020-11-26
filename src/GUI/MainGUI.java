@@ -2,6 +2,7 @@ package GUI;
 
 import java.awt.EventQueue;
 
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
@@ -22,6 +23,7 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Component;
 import javax.swing.Box;
+import javax.swing.JLayeredPane;
 
 public class MainGUI {
 
@@ -43,6 +45,9 @@ public class MainGUI {
 			}
 		});
 	}
+	
+	public void switchPanels(JPanel Panel) {
+			}
 
 	/**
 	 * Create the application.
@@ -150,6 +155,15 @@ public class MainGUI {
 		panel.add(btnNewButton, gbc_btnNewButton);
 		
 		JButton btnMembre = new JButton("Membre");
+		btnMembre.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		btnMembre.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_btnMembre = new GridBagConstraints();
 		gbc_btnMembre.fill = GridBagConstraints.BOTH;
@@ -173,15 +187,26 @@ public class MainGUI {
 		gbc_lblNewLabel_2.gridy = 7;
 		panel.add(lblNewLabel_2, gbc_lblNewLabel_2);
 		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBackground(Color.GRAY);
-		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
-		gbc_panel_3.gridwidth = 3;
-		gbc_panel_3.insets = new Insets(0, 0, 5, 5);
-		gbc_panel_3.fill = GridBagConstraints.BOTH;
-		gbc_panel_3.gridx = 2;
-		gbc_panel_3.gridy = 2;
-		frame.getContentPane().add(panel_3, gbc_panel_3);
+		JPanel MainPanel = new JPanel();
+		MainPanel.setBackground(Color.GRAY);
+		MainPanel.setLayout(null);
+		GridBagConstraints gbc_MainPanel = new GridBagConstraints();
+		gbc_MainPanel.gridwidth = 3;
+		gbc_MainPanel.insets = new Insets(0, 0, 5, 5);
+		gbc_MainPanel.fill = GridBagConstraints.BOTH;
+		gbc_MainPanel.gridx = 2;
+		gbc_MainPanel.gridy = 2;
+		frame.getContentPane().add(MainPanel, gbc_MainPanel);
+		
+		JLayeredPane layeredPane = new JLayeredPane();
+		layeredPane.setBounds(0, 0, 940, 438);
+		MainPanel.add(layeredPane);
+		
+		MembrePanel membrePanel = new MembrePanel();
+		membrePanel.setLayout(null);
+		membrePanel.setBounds(0, 0, 940, 438);
+		layeredPane.add(membrePanel);
+		
 		
 		Component horizontalStrut_1 = Box.createHorizontalStrut(20);
 		GridBagConstraints gbc_horizontalStrut_1 = new GridBagConstraints();
