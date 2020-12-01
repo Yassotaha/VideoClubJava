@@ -202,6 +202,11 @@ public class MainGUI {
 		layeredPane.setBounds(0, 0, 940, 438);
 		MainPanel.add(layeredPane);
 		
+		JPanel LoginPanel = new LoginPanel();
+		LoginPanel.setLayout(null);
+		LoginPanel.setBounds(0, 0, 940, 438);
+		layeredPane.add(LoginPanel);
+		
 		MembrePanel membrePanel = new MembrePanel();
 		membrePanel.setLayout(null);
 		membrePanel.setBounds(0, 0, 940, 438);
