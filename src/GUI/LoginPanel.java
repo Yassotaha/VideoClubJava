@@ -2,6 +2,8 @@ package GUI;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.GridLayout;
 import javax.swing.SwingConstants;
@@ -9,10 +11,21 @@ import java.awt.Color;
 import java.awt.SystemColor;
 import javax.swing.JTextField;
 import java.awt.Rectangle;
+import javax.swing.JButton;
+import javax.swing.JPasswordField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+import java.awt.EventQueue;
+import java.sql.*; 
+import javax.swing.*;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class LoginPanel extends JPanel {
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField IDField;
+	private JPasswordField MDPField;
 
 	/**
 	 * Create the panel.
@@ -32,25 +45,78 @@ public class LoginPanel extends JPanel {
 		panel.add(lblNewLabel);
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 37));
 		
-		textField = new JTextField();
-		textField.setBounds(347, 209, 237, 26);
-		add(textField);
-		textField.setColumns(10);
+		IDField = new JTextField();
+		IDField.setBounds(370, 209, 214, 26);
+		add(IDField);
+		IDField.setColumns(10);
 		
-		JLabel lblNewLabel_1 = new JLabel("Identifiant:");
-		lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblNewLabel_1.setBounds(263, 209, 83, 22);
-		add(lblNewLabel_1);
+		JLabel IDLabel = new JLabel("Identifiant:");
+		IDLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+		IDLabel.setBounds(263, 209, 83, 22);
+		add(IDLabel);
 		
-		JLabel lblMotDePasse = new JLabel("Mot de passe:");
-		lblMotDePasse.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblMotDePasse.setBounds(263, 259, 105, 22);
-		add(lblMotDePasse);
+		JLabel MDPLabel = new JLabel("Mot de passe:");
+		MDPLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+		MDPLabel.setBounds(263, 259, 105, 22);
+		add(MDPLabel);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(370, 259, 214, 26);
-		add(textField_1);
+		JButton btnConnect = new JButton("Se connecter");
+		btnConnect.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					
+					String query = "select * from UsersInfo where ID=? and PW=? ";
+					PreparedStatement pst = MainGUI.connection.prepareStatement(query);
+					
+					pst.setString(1, IDField.getText());
+					pst.setString(2, MDPField.getText());
+									
+					ResultSet rs = pst.executeQuery();
+					
+					
+					int count = 0;
+					while(rs.next()) {
+						count++;
+					}
+					
+					if(count==1) {
+						JOptionPane.showMessageDialog(null, "Identifiant et mot de passe correct.");
+						//TODO Changer pour le Panel "membre"
+					}
+					else if(count>1) {
+						JOptionPane.showMessageDialog(null, "Duplicate Username and password");
+					}
+					else {
+						JOptionPane.showMessageDialog(null, "Identifiant et mot de passe incorrect. Veuillez essayer de nouveau.");
+					}
+					
+					rs.close();
+					pst.close();
+					
+					
+				}
+				catch(Exception e1){
+					JOptionPane.showMessageDialog(null, e1);
+					System.out.println ("Catch");
+				}
+				
+				finally {
+					
+					try {
+						
+					}catch(Exception e1){
+						JOptionPane.showMessageDialog(null, e1);
+					}
+				}
+			}
+		});
+		btnConnect.setBounds(370, 305, 126, 23);
+		add(btnConnect);
+		
+		MDPField = new JPasswordField();
+		MDPField.setBounds(370, 262, 214, 26);
+		add(MDPField);
 
 	}
 }

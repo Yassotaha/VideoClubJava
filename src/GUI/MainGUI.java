@@ -2,7 +2,6 @@ package GUI;
 
 import java.awt.EventQueue;
 
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
@@ -21,12 +20,22 @@ import javax.swing.JTextField;
 import java.awt.Color;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+
+import Main.sqliteConnection;
+
 import java.awt.Component;
 import javax.swing.Box;
 import javax.swing.JLayeredPane;
 
+import java.sql.*; 
+import javax.swing.*;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 public class MainGUI {
 
+	public static Connection connection = null;
 	private JFrame frame;
 	private JTextField textField;
 
@@ -54,6 +63,7 @@ public class MainGUI {
 	 */
 	public MainGUI() {
 		initialize();
+		connection = sqliteConnection.dbConnector();
 	}
 
 	/**
