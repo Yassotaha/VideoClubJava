@@ -32,12 +32,18 @@ import javax.swing.*;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
 
 public class MainGUI {
 
 	public static Connection connection = null;
 	private JFrame frame;
 	private JTextField textField;
+	public static JPanel LoginPanel;
+	public static MembrePanel membrePanel = new MembrePanel();;
+	public static JLayeredPane layeredPane = new JLayeredPane();
+	public static VentePanel ventePanel = new VentePanel();
+	public static InventairePanel inventairePanel = new InventairePanel();
 
 	/**
 	 * Launch the application.
@@ -64,6 +70,11 @@ public class MainGUI {
 	public MainGUI() {
 		initialize();
 		connection = sqliteConnection.dbConnector();
+		
+		layeredPane.removeAll();
+		layeredPane.add(LoginPanel);
+		
+		
 	}
 
 	/**
@@ -153,6 +164,12 @@ public class MainGUI {
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				layeredPane.removeAll();
+				layeredPane.add(ventePanel);
+				layeredPane.repaint();
+				layeredPane.revalidate();
+				
 			}
 		});
 		btnNewButton.setHorizontalAlignment(SwingConstants.LEFT);
@@ -169,7 +186,11 @@ public class MainGUI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				
+				layeredPane.removeAll();
+				layeredPane.add(membrePanel);
+				layeredPane.repaint();
+				layeredPane.revalidate();
 				
 			}
 			
@@ -183,6 +204,16 @@ public class MainGUI {
 		panel.add(btnMembre, gbc_btnMembre);
 		
 		JButton btnInventaire = new JButton("Inventaire");
+		btnInventaire.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				layeredPane.removeAll();
+				layeredPane.add(inventairePanel);
+				layeredPane.repaint();
+				layeredPane.revalidate();
+				
+			}
+		});
 		btnInventaire.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_btnInventaire = new GridBagConstraints();
 		gbc_btnInventaire.insets = new Insets(0, 0, 5, 0);
@@ -198,7 +229,7 @@ public class MainGUI {
 		panel.add(lblNewLabel_2, gbc_lblNewLabel_2);
 		
 		JPanel MainPanel = new JPanel();
-		MainPanel.setBackground(Color.GRAY);
+		MainPanel.setBackground(SystemColor.menu);
 		MainPanel.setLayout(null);
 		GridBagConstraints gbc_MainPanel = new GridBagConstraints();
 		gbc_MainPanel.gridwidth = 3;
@@ -208,20 +239,29 @@ public class MainGUI {
 		gbc_MainPanel.gridy = 2;
 		frame.getContentPane().add(MainPanel, gbc_MainPanel);
 		
-		JLayeredPane layeredPane = new JLayeredPane();
+		
 		layeredPane.setBounds(0, 0, 940, 438);
 		MainPanel.add(layeredPane);
 		
-		JPanel LoginPanel = new LoginPanel();
+		LoginPanel = new LoginPanel();
 		LoginPanel.setLayout(null);
 		LoginPanel.setBounds(0, 0, 940, 438);
 		layeredPane.add(LoginPanel);
 		
-		MembrePanel membrePanel = new MembrePanel();
+		ventePanel = new VentePanel();
+		ventePanel.setLayout(null);
+		ventePanel.setBounds(0, 0, 940, 438);
+		layeredPane.add(ventePanel);
+		
+		membrePanel = new MembrePanel();
 		membrePanel.setLayout(null);
 		membrePanel.setBounds(0, 0, 940, 438);
 		layeredPane.add(membrePanel);
 		
+		inventairePanel = new InventairePanel();
+		inventairePanel.setLayout(null);
+		inventairePanel.setBounds(0, 0, 940, 438);
+		layeredPane.add(inventairePanel);
 		
 		Component horizontalStrut_1 = Box.createHorizontalStrut(20);
 		GridBagConstraints gbc_horizontalStrut_1 = new GridBagConstraints();

@@ -66,6 +66,8 @@ public class LoginPanel extends JPanel {
 				
 				try {
 					
+					Main.BackEnd.setEstSup(false);
+					
 					String query = "select * from UsersInfo where ID=? and PW=? ";
 					PreparedStatement pst = MainGUI.connection.prepareStatement(query);
 					
@@ -83,6 +85,32 @@ public class LoginPanel extends JPanel {
 					if(count==1) {
 						JOptionPane.showMessageDialog(null, "Identifiant et mot de passe correct.");
 						//TODO Changer pour le Panel "membre"
+						
+						MainGUI.layeredPane.removeAll();
+						MainGUI.layeredPane.add(MainGUI.ventePanel);
+						MainGUI.layeredPane.repaint();
+						MainGUI.layeredPane.revalidate();
+
+						String query2 = "select * from UsersInfo where ID=? and SUP=?";
+						PreparedStatement pst2 = MainGUI.connection.prepareStatement(query2);
+						pst2.setString(1, IDField.getText());
+						pst2.setString(2, "true");
+						
+						ResultSet rs2 = pst2.executeQuery();
+						
+						int count2 = 0;
+						while(rs2.next()) {
+							count2++;
+						}
+						
+						if(count2==1) {
+							System.out.println(IDField.getText()+" est un superviseur");
+							Main.BackEnd.setEstSup(true);
+						}
+						else {
+							System.out.println(IDField.getText()+" n'est pas un superviseur");
+						}
+						
 					}
 					else if(count>1) {
 						JOptionPane.showMessageDialog(null, "Duplicate Username and password");
@@ -98,7 +126,6 @@ public class LoginPanel extends JPanel {
 				}
 				catch(Exception e1){
 					JOptionPane.showMessageDialog(null, e1);
-					System.out.println ("Catch");
 				}
 				
 				finally {
