@@ -31,16 +31,18 @@ public class LoginPanel extends JPanel {
 	 * Create the panel.
 	 */
 	public LoginPanel() {
+		setBackground(Color.GRAY);
 		setBounds(new Rectangle(0, 0, 940, 438));
 		setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(SystemColor.activeCaption);
+		panel.setBackground(Color.LIGHT_GRAY);
 		panel.setBounds(263, 62, 321, 99);
 		add(panel);
 		panel.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JLabel lblNewLabel = new JLabel("Authentification");
+		lblNewLabel.setBackground(SystemColor.inactiveCaptionBorder);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblNewLabel);
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 37));
@@ -86,11 +88,7 @@ public class LoginPanel extends JPanel {
 						JOptionPane.showMessageDialog(null, "Identifiant et mot de passe correct.");
 						//TODO Changer pour le Panel "membre"
 						
-						MainGUI.layeredPane.removeAll();
-						MainGUI.layeredPane.add(MainGUI.ventePanel);
-						MainGUI.layeredPane.repaint();
-						MainGUI.layeredPane.revalidate();
-
+						
 						String query2 = "select * from UsersInfo where ID=? and SUP=?";
 						PreparedStatement pst2 = MainGUI.connection.prepareStatement(query2);
 						pst2.setString(1, IDField.getText());
