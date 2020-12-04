@@ -15,7 +15,7 @@ import java.awt.Color;
 
 import javax.swing.GroupLayout.Alignment;
 
-
+import Main.sqliteConnection;
 
 import java.awt.Component;
 import java.sql.*; 
@@ -56,7 +56,7 @@ public class MainGUI {
 	public MainGUI() {
 		initialize();
 	
-		
+		connection = sqliteConnection.dbConnector();
 		
 	}
 

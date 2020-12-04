@@ -25,17 +25,6 @@ public class InventairePanel extends JPanel
 	private JLabel lblBonbon;
 
 	
-	//Méthode Main pour les tests de la classe
-	public static void main(String[] args) 
-	{
-		InventairePanel ip = new InventairePanel();
-		
-		JFrame f = new JFrame();
-		f.getContentPane().add(ip);
-		f.setVisible(true);
-	}
-	
-	
 	//Créer le JPanel Inventaire
 	public InventairePanel() 
 	{
