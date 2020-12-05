@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
 
 public class VentePanel extends JPanel {
 	
@@ -60,13 +61,19 @@ public class VentePanel extends JPanel {
 		lblBonbonsamount.setBounds(672, 91, 65, 14);
 		add(lblBonbonsamount);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(41, 166, 409, 235);
+		add(scrollPane);
+		
 		JList list = new JList();
-		list.setBounds(41, 166, 409, 235);
-		add(list);
+		scrollPane.setViewportView(list);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(482, 166, 409, 235);
+		add(scrollPane_1);
 		
 		JList list_1 = new JList();
-		list_1.setBounds(482, 166, 409, 235);
-		add(list_1);
+		scrollPane_1.setViewportView(list_1);
 		
 		
 
