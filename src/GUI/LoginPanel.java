@@ -107,6 +107,7 @@ public class LoginPanel extends JPanel {
 						}
 						else {
 							System.out.println(IDField.getText()+" n'est pas un superviseur");
+							Main.BackEnd.setEstSup(false);
 						}
 						
 					}
