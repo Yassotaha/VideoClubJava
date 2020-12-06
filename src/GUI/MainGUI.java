@@ -1,7 +1,5 @@
 package GUI;
 
-//import Main.sqliteConnection;
-
 import java.sql.*;
 import javax.swing.*;
 import java.awt.EventQueue;
@@ -17,8 +15,6 @@ import java.awt.Color;
 import java.awt.Component;
 
 public class MainGUI {
-
-//	public static Connection connection = null;
 	
 	private JFrame frame;
 	private JTextField textField;
@@ -60,8 +56,6 @@ public class MainGUI {
 	 */
 	public MainGUI() {
 		initialize();
-//		connection = sqliteConnection.dbConnector();
-		
 	}
 
 	/**
