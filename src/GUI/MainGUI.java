@@ -1,6 +1,6 @@
 package GUI;
 
-import Main.sqliteConnection;
+//import Main.sqliteConnection;
 
 import java.sql.*;
 import javax.swing.*;
@@ -18,41 +18,49 @@ import java.awt.Component;
 
 public class MainGUI {
 
-	public static Connection connection = null;
+//	public static Connection connection = null;
 	
 	private JFrame frame;
 	private JTextField textField;
 	private JPanel mainPanel;
-	private LoginPanel loginPanel;
 	private InventairePanel inventairePanel;
 	private MembrePanel membrePanel;
 	private VentePanel ventePanel;
 	private JPanel panelOperation;
+	private GridBagLayout gridBagLayout;
+	private GridBagConstraints gbc_MainPanel;
+	private JPanel panel_1;
+	private GridBagConstraints gbc_panel_1;
+	private JLabel lblNewLabel;
+	private JPanel panel_2;
+	private GridBagConstraints gbc_panel_2;
+	
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MainGUI window = new MainGUI();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		LoginPanel.createLoginFrame();
 	}
 	
 
 	/**
-	 * Create the application.
+	 * Create the object application.
+	 */
+	public static void createMainFrame()
+	{
+		MainGUI window = new MainGUI();
+		window.frame.setVisible(true);		
+	}
+	
+	
+	
+	/**
+	 * Construct the application.
 	 */
 	public MainGUI() {
 		initialize();
-	
-		connection = sqliteConnection.dbConnector();
+//		connection = sqliteConnection.dbConnector();
 		
 	}
 
@@ -67,67 +75,76 @@ public class MainGUI {
 		frame.setBounds(100, 100, 1206, 640);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		GridBagLayout gridBagLayout = new GridBagLayout();
+		gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{44, 157, 16, 403, 484, 30, 0};
 		gridBagLayout.rowHeights = new int[]{0, 84, 207, 44, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
+		
 		frame.getContentPane().setLayout(gridBagLayout);
 		
 		//MainPanel
 		mainPanel = new JPanel();
 		mainPanel.setBackground(Color.GRAY);
 		mainPanel.setVisible(true);
-		GridBagConstraints gbc_MainPanel = new GridBagConstraints();
+		
+		gbc_MainPanel = new GridBagConstraints();
 		gbc_MainPanel.gridwidth = 3;
 		gbc_MainPanel.insets = new Insets(0, 0, 5, 5);
 		gbc_MainPanel.fill = GridBagConstraints.BOTH;
 		gbc_MainPanel.gridx = 2;
 		gbc_MainPanel.gridy = 2;
+		
 		frame.getContentPane().add(mainPanel, gbc_MainPanel);
 		mainPanel.setLayout(new CardLayout(0, 0));
-		
-		//LoginPanel
-		loginPanel = new LoginPanel();
-		loginPanel.setLayout(null);
-		mainPanel.add(loginPanel, "name_66790578861600");
 		
 		//MembrePanel
 		membrePanel = new MembrePanel();
 		membrePanel.setLayout(null);
+		
 		mainPanel.add(membrePanel, "name_66790686876900");
 		
 		//VentePanel (et location)
 		ventePanel = new VentePanel();
+		
 		mainPanel.add(ventePanel, "name_67722725656500");
 		
 		//InventairePanel
 		inventairePanel = new InventairePanel();
+		
 		mainPanel.add(inventairePanel, "name_67788483635900");
 		
 		
 		//PanelStructural1
-		JPanel panel_1 = new JPanel();
+		panel_1 = new JPanel();
 		panel_1.setBackground(Color.GRAY);
-		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
+		
+		gbc_panel_1 = new GridBagConstraints();
 		gbc_panel_1.anchor = GridBagConstraints.EAST;
 		gbc_panel_1.fill = GridBagConstraints.VERTICAL;
 		gbc_panel_1.insets = new Insets(0, 0, 5, 5);
 		gbc_panel_1.gridx = 3;
 		gbc_panel_1.gridy = 1;
+		
 		frame.getContentPane().add(panel_1, gbc_panel_1);
+		
 		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		JLabel lblNewLabel = new JLabel("Vid\u00E9o Club");
+		
+		//LabelVideoClub
+		lblNewLabel = new JLabel("Vid\u00E9o Club");
 		lblNewLabel.setBackground(Color.DARK_GRAY);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		
 		panel_1.add(lblNewLabel);
+		
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 34));
 		
 		//PanelStructural2
-		JPanel panel_2 = new JPanel();
+		panel_2 = new JPanel();
 		panel_2.setBackground(Color.GRAY);
 		panel_2.setLayout(null);
-		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
+		gbc_panel_2 = new GridBagConstraints();
 		gbc_panel_2.gridwidth = 2;
 		gbc_panel_2.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_2.fill = GridBagConstraints.BOTH;
@@ -158,10 +175,13 @@ public class MainGUI {
 		JButton btnNewButton_2 = new JButton("Se d\u00E9connecter");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				inventairePanel.setVisible(false);
-				ventePanel.setVisible(false);
-				loginPanel.setVisible(true);
-				membrePanel.setVisible(false);
+				
+//			Cache et détruit le MainFrame pour ensuite 
+//			créer un LoginFrame qui prendra sa place
+				hideMainFrame();
+				frame.dispose();
+				LoginPanel.createLoginFrame();
+				
 			}
 		});
 		btnNewButton_2.setBounds(363, 5, 124, 23);
@@ -201,7 +221,6 @@ public class MainGUI {
 			public void actionPerformed(ActionEvent e) {
 				inventairePanel.setVisible(false);
 				ventePanel.setVisible(true);
-				loginPanel.setVisible(false);
 				membrePanel.setVisible(false);
 			}
 		});
@@ -223,7 +242,6 @@ public class MainGUI {
 			public void actionPerformed(ActionEvent e) {
 				inventairePanel.setVisible(false);
 				ventePanel.setVisible(false);
-				loginPanel.setVisible(false);
 				membrePanel.setVisible(true);
 				
 			}
@@ -245,7 +263,6 @@ public class MainGUI {
 				
 				inventairePanel.setVisible(true);
 				ventePanel.setVisible(false);
-				loginPanel.setVisible(false);
 				membrePanel.setVisible(false);
 				
 			}
@@ -299,13 +316,16 @@ public class MainGUI {
 	
 	
 	
-//	public void hideOperationPanel() {
-//		this.panelOperation.setVisible(false);
-//	}
-//	
-//	public void showOperationPanel() {
-//		this.panelOperation.setVisible(true);
-//	}
+	
+	public void showMainFrame()
+	{
+		frame.setVisible(true);
+	}
+	
+	public void hideMainFrame()
+	{
+		frame.setVisible(false);
+	}
 	
 	
 }

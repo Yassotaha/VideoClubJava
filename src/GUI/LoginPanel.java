@@ -1,18 +1,12 @@
 package GUI;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+import Main.sqliteConnection;
 
 import java.awt.Font;
 import java.awt.GridLayout;
-import javax.swing.SwingConstants;
 import java.awt.Color;
 import java.awt.SystemColor;
-import javax.swing.JTextField;
 import java.awt.Rectangle;
-import javax.swing.JButton;
-import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -23,22 +17,49 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class LoginPanel extends JPanel {
+public class LoginPanel {
+	
+	public static Connection connection = null;
+	
+	private JFrame frame;
+	private JPanel firstpanel;
 	private JTextField IDField;
 	private JPasswordField MDPField;
 
+	
 	/**
-	 * Create the panel.
+	 * Create the object loginFrame.
+	 */
+	public static void createLoginFrame()
+	{
+		LoginPanel loginWindow = new LoginPanel();
+		loginWindow.frame.setVisible(true);
+	}
+	
+	
+	
+	
+	/**
+	 * Construct the loginFrame.
 	 */
 	public LoginPanel() {
-		setBackground(Color.GRAY);
-		setBounds(new Rectangle(0, 0, 940, 438));
-		setLayout(null);
+		
+		connection = sqliteConnection.dbConnector();
+		
+		frame = new JFrame();
+		frame.setBounds(100, 100, 860, 500);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		firstpanel = new JPanel();
+		firstpanel.setBackground(Color.GRAY);
+		firstpanel.setBounds(new Rectangle(0, 0, 940, 438));
+		firstpanel.setLayout(null);
+		frame.add(firstpanel);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.LIGHT_GRAY);
 		panel.setBounds(263, 62, 321, 99);
-		add(panel);
+		firstpanel.add(panel);
 		panel.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JLabel lblNewLabel = new JLabel("Authentification");
@@ -49,18 +70,18 @@ public class LoginPanel extends JPanel {
 		
 		IDField = new JTextField();
 		IDField.setBounds(370, 209, 214, 26);
-		add(IDField);
+		firstpanel.add(IDField);
 		IDField.setColumns(10);
 		
 		JLabel IDLabel = new JLabel("Identifiant:");
 		IDLabel.setFont(new Font("Arial", Font.PLAIN, 16));
 		IDLabel.setBounds(263, 209, 83, 22);
-		add(IDLabel);
+		firstpanel.add(IDLabel);
 		
 		JLabel MDPLabel = new JLabel("Mot de passe:");
 		MDPLabel.setFont(new Font("Arial", Font.PLAIN, 16));
 		MDPLabel.setBounds(263, 259, 105, 22);
-		add(MDPLabel);
+		firstpanel.add(MDPLabel);
 		
 		JButton btnConnect = new JButton("Se connecter");
 		btnConnect.addActionListener(new ActionListener() {
@@ -72,7 +93,7 @@ public class LoginPanel extends JPanel {
 					Main.BackEnd.setEstSup(false);
 					
 					String query = "select * from UsersInfo where ID=? and PW=? ";
-					PreparedStatement pst = MainGUI.connection.prepareStatement(query);
+					PreparedStatement pst = connection.prepareStatement(query);
 					
 					pst.setString(1, IDField.getText());
 					pst.setString(2, MDPField.getText());
@@ -91,7 +112,7 @@ public class LoginPanel extends JPanel {
 						
 						
 						String query2 = "select * from UsersInfo where ID=? and SUP=?";
-						PreparedStatement pst2 = MainGUI.connection.prepareStatement(query2);
+						PreparedStatement pst2 = connection.prepareStatement(query2);
 						pst2.setString(1, IDField.getText());
 						pst2.setString(2, "true");
 						
@@ -110,6 +131,12 @@ public class LoginPanel extends JPanel {
 							System.out.println(IDField.getText()+" n'est pas un superviseur");
 							Main.BackEnd.setEstSup(false);
 						}
+						
+//						Cache et détruit le LoginFrame pour ensuite 
+//						créer un MainFrame qui prendra sa place				
+						hideLoginFrame();
+						frame.dispose();
+						MainGUI.createMainFrame();
 						
 					}
 					else if(count>1) {
@@ -137,16 +164,35 @@ public class LoginPanel extends JPanel {
 					}
 				}
 				
+
 			
 				
 			}
 		});
 		btnConnect.setBounds(370, 305, 126, 23);
-		add(btnConnect);
+		firstpanel.add(btnConnect);
 		
 		MDPField = new JPasswordField();
 		MDPField.setBounds(370, 262, 214, 26);
-		add(MDPField);
+		firstpanel.add(MDPField);
 
 	}
+	
+	
+	
+	
+	public void showLoginFrame()
+	{
+		frame.setVisible(true);
+	}
+	
+	public void hideLoginFrame()
+	{
+		frame.setVisible(false);
+	}
+	
+	
+	
+	
+	
 }

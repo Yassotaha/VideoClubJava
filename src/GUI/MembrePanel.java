@@ -28,8 +28,11 @@ public class MembrePanel extends JPanel {
 	private JTable table;
 	private JTextField textField;
 	private JTextField textField_1;
-	private JTextField textField_13;
+	private JTextField txtCodeSecret;
 	private JTextField textField_14;
+	private JLabel lblCompteModifier;
+	private JLabel lblRentrerModification;
+	
 
 	/**
 	 * Create the panel.
@@ -137,14 +140,21 @@ public class MembrePanel extends JPanel {
 		table.getColumnModel().getColumn(1).setPreferredWidth(356);
 		scrollPane.setViewportView(table);
 		
+		
+		
+		
 		JButton btn_modifMembre = new JButton("Modifier un membre");
 		btn_modifMembre.setBounds(34, 356, 205, 33);
 		btn_modifMembre.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				lblCompteModifier.setVisible(true);
 				
 			}
 		});
 		add(btn_modifMembre);
+		
+		
+		
 		
 		JButton btn_suppMembre = new JButton("Supprimer un membre");
 		btn_suppMembre.setBounds(34, 399, 205, 33);
@@ -166,22 +176,22 @@ public class MembrePanel extends JPanel {
 		textField_1.setBounds(301, 353, 40, 20);
 		add(textField_1);
 		
-		textField_13 = new JTextField();
-		textField_13.setText("    Code secret:");
-		textField_13.setColumns(10);
-		textField_13.setBounds(261, 381, 80, 20);
-		add(textField_13);
+		txtCodeSecret = new JTextField();
+		txtCodeSecret.setText("Code secret:");
+		txtCodeSecret.setColumns(10);
+		txtCodeSecret.setBounds(261, 381, 80, 20);
+		add(txtCodeSecret);
 		
 		textField_14 = new JTextField();
 		textField_14.setColumns(10);
 		textField_14.setBounds(353, 381, 180, 20);
 		add(textField_14);
 		
-		JLabel lblCompteModifier = new JLabel("Compte \u00E0 modifier :");
+		lblCompteModifier = new JLabel("Compte \u00E0 modifier :");
 		lblCompteModifier.setBounds(261, 324, 134, 16);
 		add(lblCompteModifier);
 		
-		JLabel lblRentrerModification = new JLabel("Rerentrer le compte \u00E0 droite avec les modifications");
+		lblRentrerModification = new JLabel("Rerentrer le compte \u00E0 droite avec les modifications");
 		lblRentrerModification.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblRentrerModification.setBounds(251, 412, 342, 20);
 		add(lblRentrerModification);
