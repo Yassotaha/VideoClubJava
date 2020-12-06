@@ -1,9 +1,11 @@
 package GUI;
 
+import Main.sqliteConnection;
+
+import java.sql.*;
+import javax.swing.*;
 import java.awt.EventQueue;
-import java.awt.BorderLayout;
 import java.awt.CardLayout;
-import java.awt.GridLayout;
 import java.awt.Font;
 import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
@@ -12,26 +14,19 @@ import java.awt.Insets;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
-
-import javax.swing.GroupLayout.Alignment;
-
-import Main.sqliteConnection;
-
 import java.awt.Component;
-import java.sql.*; 
-import javax.swing.*;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.SystemColor;
-import java.awt.Window;
+
 public class MainGUI {
 
 	public static Connection connection = null;
+	
 	private JFrame frame;
 	private JTextField textField;
-
-	
+	private JPanel mainPanel;
+	private LoginPanel loginPanel;
+	private InventairePanel inventairePanel;
+	private MembrePanel membrePanel;
+	private VentePanel ventePanel;
 
 	/**
 	 * Launch the application.
@@ -64,6 +59,8 @@ public class MainGUI {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
+		//Frame
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.GRAY);
 		frame.setBounds(100, 100, 1206, 640);
@@ -77,35 +74,36 @@ public class MainGUI {
 		frame.getContentPane().setLayout(gridBagLayout);
 		
 		//MainPanel
-		JPanel MainPanel = new JPanel();
-		MainPanel.setBackground(Color.GRAY);
-		MainPanel.setVisible(true);
+		mainPanel = new JPanel();
+		mainPanel.setBackground(Color.GRAY);
+		mainPanel.setVisible(true);
 		GridBagConstraints gbc_MainPanel = new GridBagConstraints();
 		gbc_MainPanel.gridwidth = 3;
 		gbc_MainPanel.insets = new Insets(0, 0, 5, 5);
 		gbc_MainPanel.fill = GridBagConstraints.BOTH;
 		gbc_MainPanel.gridx = 2;
 		gbc_MainPanel.gridy = 2;
-		frame.getContentPane().add(MainPanel, gbc_MainPanel);
-		MainPanel.setLayout(new CardLayout(0, 0));
+		frame.getContentPane().add(mainPanel, gbc_MainPanel);
+		mainPanel.setLayout(new CardLayout(0, 0));
 		
 		//LoginPanel
-		LoginPanel loginPanel = new LoginPanel();
+		loginPanel = new LoginPanel();
 		loginPanel.setLayout(null);
-		MainPanel.add(loginPanel, "name_66790578861600");
+		mainPanel.add(loginPanel, "name_66790578861600");
 		
 		//MembrePanel
-		MembrePanel membrePanel = new MembrePanel();
+		membrePanel = new MembrePanel();
 		membrePanel.setLayout(null);
-		MainPanel.add(membrePanel, "name_66790686876900");
+		mainPanel.add(membrePanel, "name_66790686876900");
 		
-		//VentePanel
-		JPanel VentePanel = new VentePanel();
-		MainPanel.add(VentePanel, "name_67722725656500");
+		//VentePanel (et location)
+		ventePanel = new VentePanel();
+		mainPanel.add(ventePanel, "name_67722725656500");
 		
 		//InventairePanel
-		JPanel InventairePanel = new InventairePanel();
-		MainPanel.add(InventairePanel, "name_67788483635900");
+		inventairePanel = new InventairePanel();
+		mainPanel.add(inventairePanel, "name_67788483635900");
+		
 		
 		//PanelStructural1
 		JPanel panel_1 = new JPanel();
@@ -159,8 +157,8 @@ public class MainGUI {
 		JButton btnNewButton_2 = new JButton("Se d\u00E9connecter");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				InventairePanel.setVisible(false);
-				VentePanel.setVisible(false);
+				inventairePanel.setVisible(false);
+				ventePanel.setVisible(false);
 				loginPanel.setVisible(true);
 				membrePanel.setVisible(false);
 			}
@@ -199,8 +197,8 @@ public class MainGUI {
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				InventairePanel.setVisible(false);
-				VentePanel.setVisible(true);
+				inventairePanel.setVisible(false);
+				ventePanel.setVisible(true);
 				loginPanel.setVisible(false);
 				membrePanel.setVisible(false);
 			}
@@ -221,8 +219,8 @@ public class MainGUI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				InventairePanel.setVisible(false);
-				VentePanel.setVisible(false);
+				inventairePanel.setVisible(false);
+				ventePanel.setVisible(false);
 				loginPanel.setVisible(false);
 				membrePanel.setVisible(true);
 				
@@ -243,8 +241,8 @@ public class MainGUI {
 		btnInventaire.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				InventairePanel.setVisible(true);
-				VentePanel.setVisible(false);
+				inventairePanel.setVisible(true);
+				ventePanel.setVisible(false);
 				loginPanel.setVisible(false);
 				membrePanel.setVisible(false);
 				
@@ -276,7 +274,7 @@ public class MainGUI {
 //		panel.add(lblNewLabel_2, gbc_lblNewLabel_2);
 	
 		
-	;
+	
 		
 		
 		//HorizontalStrut2 (structural)
