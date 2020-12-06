@@ -68,12 +68,15 @@ public class MainGUI {
 		frame.getContentPane().setBackground(Color.GRAY);
 		frame.setBounds(100, 100, 1206, 640);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{44, 157, 16, 403, 484, 30, 0};
 		gridBagLayout.rowHeights = new int[]{0, 84, 207, 44, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
 		frame.getContentPane().setLayout(gridBagLayout);
+		
+		//MainPanel
 		JPanel MainPanel = new JPanel();
 		MainPanel.setBackground(Color.GRAY);
 		MainPanel.setVisible(true);
@@ -86,20 +89,25 @@ public class MainGUI {
 		frame.getContentPane().add(MainPanel, gbc_MainPanel);
 		MainPanel.setLayout(new CardLayout(0, 0));
 		
+		//LoginPanel
 		LoginPanel loginPanel = new LoginPanel();
 		loginPanel.setLayout(null);
 		MainPanel.add(loginPanel, "name_66790578861600");
 		
+		//MembrePanel
 		MembrePanel membrePanel = new MembrePanel();
 		membrePanel.setLayout(null);
 		MainPanel.add(membrePanel, "name_66790686876900");
 		
+		//VentePanel
 		JPanel VentePanel = new VentePanel();
 		MainPanel.add(VentePanel, "name_67722725656500");
 		
+		//InventairePanel
 		JPanel InventairePanel = new InventairePanel();
 		MainPanel.add(InventairePanel, "name_67788483635900");
 		
+		//PanelStructural1
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.GRAY);
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
@@ -116,6 +124,7 @@ public class MainGUI {
 		panel_1.add(lblNewLabel);
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 34));
 		
+		//PanelStructural2
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(Color.GRAY);
 		panel_2.setLayout(null);
@@ -127,21 +136,26 @@ public class MainGUI {
 		gbc_panel_2.gridy = 1;
 		frame.getContentPane().add(panel_2, gbc_panel_2);
 		
+		//LabelID
 		JLabel lblNewLabel_1 = new JLabel("ID: ");
 		lblNewLabel_1.setBounds(216, 9, 18, 14);
 		panel_2.add(lblNewLabel_1);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		
+		//TextFieldID
 		textField = new JTextField();
 		textField.setBounds(244, 6, 109, 20);
 		panel_2.add(textField);
 		textField.setEditable(false);
 		textField.setColumns(10);
 		
+		//ButtonNotification
 		JButton btnNewButton_1 = new JButton("Notification");
 		btnNewButton_1.setBounds(244, 34, 109, 34);
 		panel_2.add(btnNewButton_1);
 		
+		
+		//ButtonSeDéconnecter
 		JButton btnNewButton_2 = new JButton("Se d\u00E9connecter");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -154,6 +168,7 @@ public class MainGUI {
 		btnNewButton_2.setBounds(363, 5, 124, 23);
 		panel_2.add(btnNewButton_2);
 		
+		//HorizontalStrut (structural)
 		Component horizontalStrut = Box.createHorizontalStrut(20);
 		GridBagConstraints gbc_horizontalStrut = new GridBagConstraints();
 		gbc_horizontalStrut.insets = new Insets(0, 0, 5, 5);
@@ -161,6 +176,7 @@ public class MainGUI {
 		gbc_horizontalStrut.gridy = 2;
 		frame.getContentPane().add(horizontalStrut, gbc_horizontalStrut);
 		
+		//Panel Structural Des Opérations
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.GRAY);
 		GridBagConstraints gbc_panel = new GridBagConstraints();
@@ -176,6 +192,8 @@ public class MainGUI {
 		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
+		
+		//ButtonVenteEtLocation
 		JButton btnNewButton = new JButton("Vente et Location");
 		btnNewButton.setBackground(UIManager.getColor("CheckBox.background"));
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -185,9 +203,6 @@ public class MainGUI {
 				VentePanel.setVisible(true);
 				loginPanel.setVisible(false);
 				membrePanel.setVisible(false);
-				
-				
-				
 			}
 		});
 		btnNewButton.setHorizontalAlignment(SwingConstants.LEFT);
@@ -200,7 +215,7 @@ public class MainGUI {
 		panel.add(btnNewButton, gbc_btnNewButton);
 		
 		
-		
+		//ButtonMembre
 		JButton btnMembre = new JButton("Membre");
 		btnMembre.addActionListener(new ActionListener() {
 
@@ -222,6 +237,8 @@ public class MainGUI {
 		gbc_btnMembre.gridy = 4;
 		panel.add(btnMembre, gbc_btnMembre);
 		
+		
+		//ButtonInventaire
 		JButton btnInventaire = new JButton("Inventaire");
 		btnInventaire.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -241,25 +258,28 @@ public class MainGUI {
 		gbc_btnInventaire.gridy = 6;
 		panel.add(btnInventaire, gbc_btnInventaire);
 		
-		 ImageIcon icon = new ImageIcon("GUI/.logo.png");
+		
+		//Icon
+		ImageIcon icon = new ImageIcon("GUI/.logo.png");
 		  
 		 
-		
-			JLabel lblNewLabel_2 = new JLabel("Logo");
-			GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
-			gbc_lblNewLabel_2.gridx = 0;
-			gbc_lblNewLabel_2.gridy = 7;
-			panel.add(lblNewLabel_2, gbc_lblNewLabel_2);
-	
+		//LabelLogo
+		JLabel lblNewLabel_2 = new JLabel("Logo");
+		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.gridx = 0;
 		gbc_lblNewLabel_2.gridy = 7;
 		panel.add(lblNewLabel_2, gbc_lblNewLabel_2);
+		
+//ERREUR? copier deux fois de suite
+//		gbc_lblNewLabel_2.gridx = 0;
+//		gbc_lblNewLabel_2.gridy = 7;
+//		panel.add(lblNewLabel_2, gbc_lblNewLabel_2);
 	
 		
 	;
 		
 		
-		
+		//HorizontalStrut2 (structural)
 		Component horizontalStrut_1 = Box.createHorizontalStrut(20);
 		GridBagConstraints gbc_horizontalStrut_1 = new GridBagConstraints();
 		gbc_horizontalStrut_1.insets = new Insets(0, 0, 5, 0);
@@ -267,6 +287,7 @@ public class MainGUI {
 		gbc_horizontalStrut_1.gridy = 2;
 		frame.getContentPane().add(horizontalStrut_1, gbc_horizontalStrut_1);
 		
+		//VerticalStrut (structural)
 		Component verticalStrut = Box.createVerticalStrut(20);
 		GridBagConstraints gbc_verticalStrut = new GridBagConstraints();
 		gbc_verticalStrut.insets = new Insets(0, 0, 0, 5);

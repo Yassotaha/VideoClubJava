@@ -54,6 +54,7 @@ public class InventairePanel extends JPanel
 		textFieldNbPopcorn.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		textFieldNbPopcorn.setColumns(10);
 		textFieldNbPopcorn.setBounds(324, 397, 53, 28);
+		textFieldNbPopcorn.setEditable(false);
 		add(textFieldNbPopcorn);
 		
 		
@@ -64,12 +65,13 @@ public class InventairePanel extends JPanel
 		textFieldNbBonbon.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		textFieldNbBonbon.setColumns(10);
 		textFieldNbBonbon.setBounds(600, 397, 53, 28);
+		textFieldNbBonbon.setEditable(false);
 		add(textFieldNbBonbon);
 		
 		
 		
 		scrollPaneInventaire = new JScrollPane();
-		scrollPaneInventaire.setBounds(23, 42, 859, 342);
+		scrollPaneInventaire.setBounds(23, 42, 859, 207);
 		add(scrollPaneInventaire);
 		
 		
@@ -78,48 +80,52 @@ public class InventairePanel extends JPanel
 		tableInventaire.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		tableInventaire.setModel(new DefaultTableModel(
 			new Object[][] {
-				{"Spider-man", "2011", "10$", new Integer(6), "non", "Fantastique"},
-				{"Superman", "2003", "12$", new Integer(3), "29,99$", "Fantastique"},
-				{"...", "...", "...", "...", "...", "..."},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
+				{"Spider-man", "DVD", new Integer(2011), "10$", new Integer(6), "non", "Fantastique"},
+				{"Superman", "Blu-Ray", new Integer(2003), "12$", new Integer(3), "29,99$", "Fantastique"},
+				{"", null, null, "", null, "", ""},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
 			},
 			new String[] {
-				"Titre", "Année", "Prix Location", "Stock", "Achat", "Catégorie"
+				"Titre", "Format", "Titre", "Prix Location", "Stock", "Achat", "Cat\u00E9gorie"
 			}
-		));
+		) {
+			Class[] columnTypes = new Class[] {
+				String.class, String.class, Integer.class, String.class, Integer.class, String.class, String.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+		});
+		tableInventaire.getColumnModel().getColumn(0).setPreferredWidth(168);
+		tableInventaire.getColumnModel().getColumn(2).setPreferredWidth(68);
+		tableInventaire.getColumnModel().getColumn(3).setPreferredWidth(89);
+		tableInventaire.getColumnModel().getColumn(4).setPreferredWidth(48);
+		tableInventaire.getColumnModel().getColumn(6).setPreferredWidth(116);
 		tableInventaire.getTableHeader().setFont(new Font("Tahoma", Font.PLAIN, 20));
-		tableInventaire.getColumnModel().getColumn(0).setPreferredWidth(172);
-		tableInventaire.getColumnModel().getColumn(1).setPreferredWidth(68);
-		tableInventaire.getColumnModel().getColumn(2).setPreferredWidth(89);
-		tableInventaire.getColumnModel().getColumn(3).setPreferredWidth(48);
-		tableInventaire.getColumnModel().getColumn(5).setPreferredWidth(116);
 		scrollPaneInventaire.setViewportView(tableInventaire);
-		
-		
-		
-		
+
 
 	}
 }
