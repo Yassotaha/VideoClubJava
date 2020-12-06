@@ -36,7 +36,7 @@ public class MainGUI {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		LoginPanel.createLoginFrame();
+		LoginFrame.createLoginFrame();
 	}
 	
 
@@ -174,7 +174,7 @@ public class MainGUI {
 //			créer un LoginFrame qui prendra sa place
 				hideMainFrame();
 				frame.dispose();
-				LoginPanel.createLoginFrame();
+				LoginFrame.createLoginFrame();
 				
 			}
 		});

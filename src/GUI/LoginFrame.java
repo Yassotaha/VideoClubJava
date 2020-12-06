@@ -17,7 +17,7 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class LoginPanel {
+public class LoginFrame {
 	
 	public static Connection connection = null;
 	
@@ -32,7 +32,7 @@ public class LoginPanel {
 	 */
 	public static void createLoginFrame()
 	{
-		LoginPanel loginWindow = new LoginPanel();
+		LoginFrame loginWindow = new LoginFrame();
 		loginWindow.frame.setVisible(true);
 	}
 	
@@ -42,7 +42,7 @@ public class LoginPanel {
 	/**
 	 * Construct the loginFrame.
 	 */
-	public LoginPanel() {
+	public LoginFrame() {
 		
 		connection = sqliteConnection.dbConnector();
 		
