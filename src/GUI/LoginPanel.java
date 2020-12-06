@@ -66,6 +66,7 @@ public class LoginPanel extends JPanel {
 		btnConnect.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				
 				try {
 					
 					Main.BackEnd.setEstSup(false);
@@ -135,6 +136,9 @@ public class LoginPanel extends JPanel {
 						JOptionPane.showMessageDialog(null, e1);
 					}
 				}
+				
+			
+				
 			}
 		});
 		btnConnect.setBounds(370, 305, 126, 23);

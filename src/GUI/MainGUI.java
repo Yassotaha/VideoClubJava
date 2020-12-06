@@ -27,6 +27,7 @@ public class MainGUI {
 	private InventairePanel inventairePanel;
 	private MembrePanel membrePanel;
 	private VentePanel ventePanel;
+	private JPanel panelOperation;
 
 	/**
 	 * Launch the application.
@@ -174,28 +175,29 @@ public class MainGUI {
 		gbc_horizontalStrut.gridy = 2;
 		frame.getContentPane().add(horizontalStrut, gbc_horizontalStrut);
 		
-		//Panel Structural Des Opérations
-		JPanel panel = new JPanel();
-		panel.setBackground(Color.GRAY);
+		
+		//Panel Des Opérations (structural)
+		panelOperation = new JPanel();
+		panelOperation.setBackground(Color.GRAY);
 		GridBagConstraints gbc_panel = new GridBagConstraints();
 		gbc_panel.fill = GridBagConstraints.BOTH;
 		gbc_panel.insets = new Insets(0, 0, 5, 5);
 		gbc_panel.gridx = 1;
 		gbc_panel.gridy = 2;
-		frame.getContentPane().add(panel, gbc_panel);
+		frame.getContentPane().add(panelOperation, gbc_panel);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{139, 0};
 		gbl_panel.rowHeights = new int[]{59, 16, 66, 21, 64, 23, 66, 88, 0};
 		gbl_panel.columnWeights = new double[]{0.0, Double.MIN_VALUE};
 		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		panel.setLayout(gbl_panel);
+		panelOperation.setLayout(gbl_panel);
 		
 		
 		//ButtonVenteEtLocation
-		JButton btnNewButton = new JButton("Vente et Location");
-		btnNewButton.setBackground(UIManager.getColor("CheckBox.background"));
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnVente = new JButton("Vente et Location");
+		btnVente.setBackground(UIManager.getColor("CheckBox.background"));
+		btnVente.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnVente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				inventairePanel.setVisible(false);
 				ventePanel.setVisible(true);
@@ -203,14 +205,14 @@ public class MainGUI {
 				membrePanel.setVisible(false);
 			}
 		});
-		btnNewButton.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-		gbc_btnNewButton.anchor = GridBagConstraints.WEST;
-		gbc_btnNewButton.fill = GridBagConstraints.VERTICAL;
-		gbc_btnNewButton.insets = new Insets(0, 0, 5, 0);
-		gbc_btnNewButton.gridx = 0;
-		gbc_btnNewButton.gridy = 2;
-		panel.add(btnNewButton, gbc_btnNewButton);
+		btnVente.setHorizontalAlignment(SwingConstants.LEFT);
+		GridBagConstraints gbc_btnVente = new GridBagConstraints();
+		gbc_btnVente.anchor = GridBagConstraints.WEST;
+		gbc_btnVente.fill = GridBagConstraints.VERTICAL;
+		gbc_btnVente.insets = new Insets(0, 0, 5, 0);
+		gbc_btnVente.gridx = 0;
+		gbc_btnVente.gridy = 2;
+		panelOperation.add(btnVente, gbc_btnVente);
 		
 		
 		//ButtonMembre
@@ -233,7 +235,7 @@ public class MainGUI {
 		gbc_btnMembre.insets = new Insets(0, 0, 5, 0);
 		gbc_btnMembre.gridx = 0;
 		gbc_btnMembre.gridy = 4;
-		panel.add(btnMembre, gbc_btnMembre);
+		panelOperation.add(btnMembre, gbc_btnMembre);
 		
 		
 		//ButtonInventaire
@@ -254,7 +256,7 @@ public class MainGUI {
 		gbc_btnInventaire.fill = GridBagConstraints.BOTH;
 		gbc_btnInventaire.gridx = 0;
 		gbc_btnInventaire.gridy = 6;
-		panel.add(btnInventaire, gbc_btnInventaire);
+		panelOperation.add(btnInventaire, gbc_btnInventaire);
 		
 		
 		//Icon
@@ -266,12 +268,12 @@ public class MainGUI {
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.gridx = 0;
 		gbc_lblNewLabel_2.gridy = 7;
-		panel.add(lblNewLabel_2, gbc_lblNewLabel_2);
+		panelOperation.add(lblNewLabel_2, gbc_lblNewLabel_2);
 		
 //ERREUR? copier deux fois de suite
 //		gbc_lblNewLabel_2.gridx = 0;
 //		gbc_lblNewLabel_2.gridy = 7;
-//		panel.add(lblNewLabel_2, gbc_lblNewLabel_2);
+//		panelOperation.add(lblNewLabel_2, gbc_lblNewLabel_2);
 	
 		
 	
@@ -294,4 +296,16 @@ public class MainGUI {
 		frame.getContentPane().add(verticalStrut, gbc_verticalStrut);
 		
 	}
+	
+	
+	
+//	public void hideOperationPanel() {
+//		this.panelOperation.setVisible(false);
+//	}
+//	
+//	public void showOperationPanel() {
+//		this.panelOperation.setVisible(true);
+//	}
+	
+	
 }
