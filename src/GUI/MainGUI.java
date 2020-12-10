@@ -280,12 +280,7 @@ public class MainGUI {
 		gbc_lblNewLabel_2.gridx = 0;
 		gbc_lblNewLabel_2.gridy = 7;
 		panelOperation.add(lblNewLabel_2, gbc_lblNewLabel_2);
-		
-//ERREUR? copier deux fois de suite
-//		gbc_lblNewLabel_2.gridx = 0;
-//		gbc_lblNewLabel_2.gridy = 7;
-//		panelOperation.add(lblNewLabel_2, gbc_lblNewLabel_2);
-	
+
 		
 	
 		

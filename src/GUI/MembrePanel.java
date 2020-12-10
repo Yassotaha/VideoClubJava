@@ -26,12 +26,17 @@ public class MembrePanel extends JPanel {
 	private JTextField textField_8;
 	private JTextField textField_9;
 	private JTable table;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField txtCodeSecret;
-	private JTextField textField_14;
+	private JTextField textField_inputNomAModif;
+	private JTextField textField_nomAModif;
+	private JTextField textField_CodeSecretAModif;
+	private JTextField textField_inputCodeSecretAModif;
 	private JLabel lblCompteModifier;
 	private JLabel lblRentrerModification;
+	
+	private JButton btnAjouterMembre; 
+	private JButton btnAppliquerModifMembre;
+	private JButton btnSupprimerMembre;
+	private JButton btnAnnulerOperation;
 	
 
 	/**
@@ -49,6 +54,53 @@ public class MembrePanel extends JPanel {
 			}
 		});
 		add(button);
+		
+		
+		
+		
+		
+		btnAjouterMembre = new JButton("Ajouter");
+		button.setBounds(910, 400, 10, 10);
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		add(button);
+		
+		
+		btnAppliquerModifMembre = new JButton("Appliquer");
+		button.setBounds(34, 316, 205, 33);
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		add(button);
+		
+		
+		
+		btnSupprimerMembre = new JButton("Supprimer");
+		button.setBounds(34, 316, 205, 33);
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		add(button);
+		
+		
+		btnAnnulerOperation = new JButton("Annuler");
+		button.setBounds(34, 316, 205, 33);
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		add(button);
+		
+		
+		
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
@@ -148,7 +200,12 @@ public class MembrePanel extends JPanel {
 		btn_modifMembre.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				lblCompteModifier.setVisible(true);
-				
+				lblRentrerModification.setVisible(true);
+				textField_inputNomAModif.setVisible(true);
+				textField_nomAModif.setVisible(true);
+				textField_CodeSecretAModif.setVisible(true);
+				textField_inputCodeSecretAModif.setVisible(true);
+				revalidate();
 			}
 		});
 		add(btn_modifMembre);
@@ -165,35 +222,42 @@ public class MembrePanel extends JPanel {
 		});
 		add(btn_suppMembre);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(353, 353, 180, 20);
-		add(textField);
+		textField_inputNomAModif = new JTextField();
+		textField_inputNomAModif.setColumns(10);
+		textField_inputNomAModif.setBounds(353, 353, 180, 20);
+		textField_inputNomAModif.setVisible(false);
+		add(textField_inputNomAModif);
 		
-		textField_1 = new JTextField();
-		textField_1.setText("    Nom:");
-		textField_1.setColumns(10);
-		textField_1.setBounds(301, 353, 40, 20);
-		add(textField_1);
+		textField_nomAModif = new JTextField();
+		textField_nomAModif.setText("    Nom:");
+		textField_nomAModif.setColumns(10);
+		textField_nomAModif.setBounds(301, 353, 40, 20);
+		textField_nomAModif.setVisible(false);
+		add(textField_nomAModif);
 		
-		txtCodeSecret = new JTextField();
-		txtCodeSecret.setText("Code secret:");
-		txtCodeSecret.setColumns(10);
-		txtCodeSecret.setBounds(261, 381, 80, 20);
-		add(txtCodeSecret);
+		textField_CodeSecretAModif = new JTextField();
+		textField_CodeSecretAModif.setText("Code secret:");
+		textField_CodeSecretAModif.setColumns(10);
+		textField_CodeSecretAModif.setVisible(false);
+		textField_CodeSecretAModif.setBounds(261, 381, 80, 20);
 		
-		textField_14 = new JTextField();
-		textField_14.setColumns(10);
-		textField_14.setBounds(353, 381, 180, 20);
-		add(textField_14);
+		add(textField_CodeSecretAModif);
+		
+		textField_inputCodeSecretAModif = new JTextField();
+		textField_inputCodeSecretAModif.setColumns(10);
+		textField_inputCodeSecretAModif.setBounds(353, 381, 180, 20);
+		textField_inputCodeSecretAModif.setVisible(false);
+		add(textField_inputCodeSecretAModif);
 		
 		lblCompteModifier = new JLabel("Compte \u00E0 modifier :");
 		lblCompteModifier.setBounds(261, 324, 134, 16);
+		lblCompteModifier.setVisible(false);
 		add(lblCompteModifier);
 		
 		lblRentrerModification = new JLabel("Rerentrer le compte \u00E0 droite avec les modifications");
 		lblRentrerModification.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblRentrerModification.setBounds(251, 412, 342, 20);
+		lblRentrerModification.setVisible(false);
 		add(lblRentrerModification);
 
 	}
