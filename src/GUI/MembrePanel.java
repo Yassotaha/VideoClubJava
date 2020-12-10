@@ -6,6 +6,11 @@ import javax.swing.JScrollBar;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import net.proteanit.sql.DbUtils;
 
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -15,16 +20,17 @@ import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JLabel;
 import java.awt.Font;
+import Main.sqliteConnection;
 
 public class MembrePanel extends JPanel {
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField CodeSecret;
+	private JTextField Cartedecredit;
+	private JTextField Telephone;
 	private JTextField textField_5;
 	private JTextField txtTlphone;
 	private JTextField textField_7;
 	private JTextField textField_8;
-	private JTextField textField_9;
+	private JTextField Nom;
 	private JTable table;
 	private JTextField textField;
 	private JTextField textField_1;
@@ -33,11 +39,13 @@ public class MembrePanel extends JPanel {
 	private JLabel lblCompteModifier;
 	private JLabel lblRentrerModification;
 	
+	public static Connection connection = null;
 
 	/**
 	 * Create the panel.
 	 */
 	public MembrePanel() {
+		connection = sqliteConnection.dbConnector();
 		setBounds(new Rectangle(0, 0, 940, 438));
 		setLayout(null);
 		
@@ -50,20 +58,20 @@ public class MembrePanel extends JPanel {
 		});
 		add(button);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(684, 412, 180, 20);
-		add(textField_2);
+		CodeSecret = new JTextField();
+		CodeSecret.setColumns(10);
+		CodeSecret.setBounds(684, 412, 180, 20);
+		add(CodeSecret);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(684, 381, 180, 20);
-		add(textField_3);
+		Cartedecredit = new JTextField();
+		Cartedecredit.setColumns(10);
+		Cartedecredit.setBounds(684, 381, 180, 20);
+		add(Cartedecredit);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(684, 350, 180, 20);
-		add(textField_4);
+		Telephone = new JTextField();
+		Telephone.setColumns(10);
+		Telephone.setBounds(684, 350, 180, 20);
+		add(Telephone);
 		
 		textField_5 = new JTextField();
 		textField_5.setText("    Nom:");
@@ -89,53 +97,27 @@ public class MembrePanel extends JPanel {
 		textField_8.setBounds(545, 381, 134, 20);
 		add(textField_8);
 		
-		textField_9 = new JTextField();
-		textField_9.setColumns(10);
-		textField_9.setBounds(684, 322, 180, 20);
-		add(textField_9);
+		Nom = new JTextField();
+		Nom.setColumns(10);
+		Nom.setBounds(684, 322, 180, 20);
+		add(Nom);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(24, 11, 859, 298);
 		add(scrollPane);
 		
 		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"Yaseen Choukri", "819-318-2360"},
-				{"Samuel Bernier", "819-123-4567"},
-				{"...", null},
-				{"...", null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-			},
-			new String[] {
-				"Liste des membres", "T\u00E9l\u00E9phone"
-			}
-		));
+		
+		try {
+			String query = "select Nom,Telephone from MembreInfo";
+			PreparedStatement pst = connection.prepareStatement(query);
+			ResultSet rs = pst.executeQuery();
+			table.setModel(DbUtils.resultSetToTableModel(rs));
+		} catch (SQLException e1) {
+			
+			e1.printStackTrace();
+		}
+		
 		table.getColumnModel().getColumn(0).setPreferredWidth(291);
 		table.getColumnModel().getColumn(1).setPreferredWidth(356);
 		scrollPane.setViewportView(table);
