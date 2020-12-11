@@ -1,6 +1,7 @@
 package GUI;
 
 import javax.swing.JPanel;
+
 import javax.swing.JTable;
 import javax.swing.JScrollBar;
 import java.awt.Rectangle;
