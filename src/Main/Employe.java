@@ -3,16 +3,16 @@ package Main;
 public class Employe {
 
 	//Attributs
-		private String id;
-		private String password;
-		private Boolean isSuperviseur;
+		protected String id;
+		protected String password;
+		protected Boolean isSuperviseur;
 		
 		
 	//Constructeur
-		public Employe(String id, String password, Boolean isSuperviseur) {
+		public Employe(String id, String password) {
 			this.id = id;
 			this.password = password;
-			this.isSuperviseur = isSuperviseur;
+			this.isSuperviseur = false;
 		}
 		
 
