@@ -2,12 +2,16 @@ package GUI;
 
 import java.awt.Font;
 import java.awt.Rectangle;
-
+import Main.sqliteConnection;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -20,14 +24,17 @@ import javax.swing.JTextField;
 
 public class VentePanel extends JPanel {
 	
+	public static Connection connection = null;
 	private JLabel lblPopcornamount;
 	private JLabel lblBonbonsamount;
 	private int TotalPopcorn = 0;
 	private int TotalBonbons = 0;
 	private int i = 1;
 	private JTable table;
-	private JTextField textField;
+	private JTextField EntrerCodeProduit;
 	private JLabel Total;
+	private boolean isAchat;
+
 	/**
 	 * Create the panel.
 	 */
@@ -112,17 +119,39 @@ public class VentePanel extends JPanel {
 		));
 		
 		JRadioButton rdbtnLouer = new JRadioButton("Louer");
+		rdbtnLouer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			
+				boolean isAchat = false;
+			
+			}
+		});
 		rdbtnLouer.setBounds(52, 371, 109, 23);
 		add(rdbtnLouer);
 		
 		JRadioButton rdbtnAcheter = new JRadioButton("Acheter");
+		
+		
+		rdbtnAcheter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			
+			boolean isAchat = true;
+			
+			
+			
+			}
+			
+					
+		});
+		
+		
 		rdbtnAcheter.setBounds(52, 333, 109, 23);
 		add(rdbtnAcheter);
 		
-		textField = new JTextField();
-		textField.setBounds(178, 349, 143, 22);
-		add(textField);
-		textField.setColumns(10);
+		EntrerCodeProduit = new JTextField();
+		EntrerCodeProduit.setBounds(178, 349, 143, 22);
+		add(EntrerCodeProduit);
+		EntrerCodeProduit.setColumns(10);
 		
 		JLabel lblCodeProduit = new JLabel("Code produit");
 		lblCodeProduit.setBounds(221, 333, 78, 14);
@@ -132,8 +161,50 @@ public class VentePanel extends JPanel {
 		btnAjouter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				connection = sqliteConnection.dbConnector();
+				
+				
+				try {
+					
+					
+					String query = "select * from FilmInfo where ID=?"; 
+					PreparedStatement pst = connection.prepareStatement(query);
+					pst.setString(1, EntrerCodeProduit.getText());
+					
+					ResultSet rs = pst.executeQuery();
+					
+					
+				} 
+				
+				catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			
+				
+				
+				
+				
+				
+				//Colonne vide ou pas
+				
+				/*for(int i = 0; i < membre.length && RangerVide != true; i++)
+				{
+					if(membre[i][0] == null && membre[i][1] == null)
+					{
+						RangerVide = true;
+						noRangerVide = i;
+					}
+					
+					
+					
+					//si on a fini de lire le tableau et qu,il n,y a pas de place libre (agrandir size du tab)
+				}
+				
 							
-			/*if(RangerVide == true)
+			if(RangerVide == true)
+			 
 		{
 			for(int j = 0; j < membre[noRangerVide].length ; j++)
 			{
@@ -221,7 +292,7 @@ public class VentePanel extends JPanel {
 			    
 			   
 			    
-//			    Total.setText("" + total);
+			    Total.setText("" + total);
 			
 		
 				
