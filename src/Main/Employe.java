@@ -28,8 +28,6 @@ public class Employe {
 		public Boolean getIsSuperviseur(){
 			return this.isSuperviseur;
 		}
-		
-		
 	//Setters (Mutateurs)
 		public void setId(String id){
 			this.id = id;
