@@ -7,6 +7,6 @@
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="sqlite-jdbc-3.27.2.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/abdel/Downloads/rs2xml.jar"/>
+	<classpathentry kind="lib" path="rs2xml.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
