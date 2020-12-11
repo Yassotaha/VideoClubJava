@@ -19,7 +19,7 @@ Connection conn = null;
 			
 			
 			Connection conn=DriverManager.getConnection("jdbc:sqlite:"+path_p);
-			JOptionPane.showMessageDialog(null, "Connection Successfull");
+			//OptionPane.showMessageDialog(null, "Connection Successfull");
 			return conn;
 			
 		} catch(Exception e) {
