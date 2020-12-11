@@ -2,6 +2,9 @@ package GUI;
 
 import java.sql.*;
 import javax.swing.*;
+
+import Main.BackEnd;
+
 import java.awt.EventQueue;
 import java.awt.CardLayout;
 import java.awt.Font;
@@ -53,6 +56,7 @@ public class MainGUI {
 	
 	/**
 	 * Construct the application.
+	 * @wbp.parser.entryPoint
 	 */
 	public MainGUI() {
 		initialize();
@@ -255,12 +259,26 @@ public class MainGUI {
 		btnInventaire.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				inventairePanel.setVisible(true);
-				ventePanel.setVisible(false);
-				membrePanel.setVisible(false);
 				
-			}
+				
+				
+				if (BackEnd.estSup == true) {
+					
+					inventairePanel.setVisible(true);
+					ventePanel.setVisible(false);
+					membrePanel.setVisible(false);
+					}
+					else {
+						
+						JOptionPane.showMessageDialog(null, "Accès refusé");
+					}
+					
+				}
+				
+				
+			
 		});
+		
 		btnInventaire.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_btnInventaire = new GridBagConstraints();
 		gbc_btnInventaire.insets = new Insets(0, 0, 5, 0);

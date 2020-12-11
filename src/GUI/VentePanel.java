@@ -1,5 +1,6 @@
 package GUI;
 
+import java.awt.Font;
 import java.awt.Rectangle;
 
 import javax.swing.JPanel;
@@ -9,6 +10,13 @@ import javax.swing.JList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.JScrollBar;
+import javax.swing.JCheckBox;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 
 public class VentePanel extends JPanel {
 	
@@ -17,7 +25,9 @@ public class VentePanel extends JPanel {
 	private int TotalPopcorn = 0;
 	private int TotalBonbons = 0;
 	private int i = 1;
-
+	private JTable table;
+	private JTextField textField;
+	private JLabel Total;
 	/**
 	 * Create the panel.
 	 */
@@ -62,19 +72,175 @@ public class VentePanel extends JPanel {
 		add(lblBonbonsamount);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(41, 166, 409, 235);
+		scrollPane.setBounds(52, 160, 859, 144);
 		add(scrollPane);
 		
-		JList list = new JList();
-		scrollPane.setViewportView(list);
+		//ListSelectionModel model=table.getSelectionModel();
 		
-		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(482, 166, 409, 235);
-		add(scrollPane_1);
+		table = new JTable();
+		scrollPane.setViewportView(table);
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, "james bond", "10", "3", "3", "4"},
+				{null, null, "thor", "10", "3", "5", "5"},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+			},
+			new String[] {
+				"Acheter", "Louer", "Titre", "Prix achat", "Prix location", "Quantit\u00E9 achat", "Quantit\u00E9 location"
+			}
+		));
 		
-		JList list_1 = new JList();
-		scrollPane_1.setViewportView(list_1);
+		JRadioButton rdbtnLouer = new JRadioButton("Louer");
+		rdbtnLouer.setBounds(52, 371, 109, 23);
+		add(rdbtnLouer);
 		
+		JRadioButton rdbtnAcheter = new JRadioButton("Acheter");
+		rdbtnAcheter.setBounds(52, 333, 109, 23);
+		add(rdbtnAcheter);
+		
+		textField = new JTextField();
+		textField.setBounds(178, 349, 143, 22);
+		add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblCodeProduit = new JLabel("Code produit");
+		lblCodeProduit.setBounds(221, 333, 78, 14);
+		add(lblCodeProduit);
+		
+		JButton btnAjouter = new JButton("Ajouter");
+		btnAjouter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+							
+			/*if(RangerVide == true)
+		{
+			for(int j = 0; j < membre[noRangerVide].length ; j++)
+			{
+				if(j == 0 && isAchat == true)
+				{
+					membre[noRangerVide][j] = "Acheter"; 
+				}
+				else if(j == 1 && isAchat == false)
+				{
+					membre[noRangerVide][j] = "Louer";
+				}
+				//colonne louer
+				else if(j == 6)
+				{
+					if(isAchat == false)
+					{
+						membre[noRangerVide][j] = databaseTabRetour[j-2];
+						//m/thode incrementer prix total
+					}
+					else
+					{
+						membre[noRangerVide][j] = "-";
+					}
+							
+				}
+				//colonne acheter
+				else if(j == 7)
+				{
+					if(isAchat == true)
+					{
+						membre[noRangerVide][j] = databaseTabRetour[j-2];
+						//m/thode incrementer prix total
+					}
+					else
+					{
+						membre[noRangerVide][j] = "-";
+					}
+				}
+				else
+				{
+					membre[noRangerVide][j] = databaseTabRetour[j-2];
+				}
+				
+			}
+		}
+		
+	}
+			
+			 
+			 */
+				rdbtnLouer.setSelected(false);
+				rdbtnAcheter.setSelected(false);
+			}
+		});
+		btnAjouter.setBounds(354, 349, 89, 23);
+		add(btnAjouter);
+		
+		
+		JLabel lblTotal = new JLabel("Total : ");
+		lblTotal.setBounds(729, 353, 48, 14);
+		add(lblTotal);
+		
+		Total = new JLabel();
+		Total.setBounds(739, 371, 150, 56);
+		add(Total);
+		
+		JButton btnPayer = new JButton("Payer");
+		btnPayer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int total = 0;
+				
+			    for(int i = 0; i < table.getRowCount(); i++){
+			       
+			        int MontantAchat = Integer.parseInt(table.getValueAt(i, 3)+"");
+			        total = MontantAchat+total;
+			        System.out.println(total);
+			    }
+			    for(int i = 0; i < table.getRowCount(); i++){
+				       
+			        int MontantLouer = Integer.parseInt(table.getValueAt(i, 4)+"");
+			        total = MontantLouer+total;
+			        System.out.println(total);
+			    }
+			    
+			   
+			    
+//			    Total.setText("" + total);
+			
+		
+				
+			}
+			
+		});
+		btnPayer.setBounds(562, 371, 157, 56);
+		add(btnPayer);
+		
+		JLabel lblTotal1 = new JLabel("Total : ");
+		lblTotal1.setBounds(729, 353, 48, 14);
+		add(lblTotal1);
+		
+		
+	
+		
+		
+		
+
 		
 
 	}
