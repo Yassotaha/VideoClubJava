@@ -7,6 +7,7 @@ import javax.swing.JScrollBar;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,6 +21,8 @@ import javax.swing.SwingConstants;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import Main.sqliteConnection;
 
@@ -55,6 +58,7 @@ public class MembrePanel extends JPanel {
 	 */
 	public MembrePanel() {
 		connection = sqliteConnection.dbConnector();
+		table = new JTable();
 		setBounds(new Rectangle(0, 0, 940, 438));
 		setLayout(null);
 		
@@ -62,6 +66,38 @@ public class MembrePanel extends JPanel {
 		button.setBounds(34, 316, 205, 33);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//La methode enregistrer_employer permet d'enregistrer un nouveau employer dans la base de donnees.
+				String NomValue = Nom.getText();
+				String TelValue = Telephone.getText();
+				
+				String CreditValue= Cartedecredit.getText();
+				Long  CreditValue1 = Long.parseLong(CreditValue);
+				
+				String CodeValue= Cartedecredit.getText();
+				Integer CodeValue1 = Integer.parseInt(CodeValue);
+				
+				
+				
+                try {
+		        	
+					/*String query = "INSERT INTO MembreInfo (`Nom`,Telephone,Credit,CodeSecret) Values("+NomValue+","+TelValue+","+CreditValue2+","+CodeValue2+")";*/
+                	String query = "INSERT INTO MembreInfo (`Nom`,Telephone,Credit,CodeSecret) Values(?,?,?,?)";
+					PreparedStatement pst = connection.prepareStatement(query);
+					pst.setString(1, NomValue);
+					pst.setString(2, TelValue);
+					pst.setLong(3, CreditValue1);
+					pst.setInt(4, CodeValue1);
+
+					boolean rs = pst.execute();
+					String query1 = "select ID,Nom,Telephone from MembreInfo";
+					PreparedStatement pst1 = connection.prepareStatement(query1);
+					ResultSet rs1 = pst1.executeQuery();
+					table.setModel(DbUtils.resultSetToTableModel(rs1));
+					
+				} catch (SQLException e1) {
+					
+					e1.printStackTrace();
+				}
 				
 			}
 		});
@@ -166,10 +202,11 @@ public class MembrePanel extends JPanel {
 		scrollPane.setBounds(24, 11, 859, 298);
 		add(scrollPane);
 		
-		table = new JTable();
+		
+		
 		
 		try {
-			String query = "select Nom,Telephone from MembreInfo";
+			String query = "select ID,Nom,Telephone from MembreInfo";
 			PreparedStatement pst = connection.prepareStatement(query);
 			ResultSet rs = pst.executeQuery();
 			table.setModel(DbUtils.resultSetToTableModel(rs));
@@ -207,6 +244,27 @@ public class MembrePanel extends JPanel {
 		btn_suppMembre.setBounds(34, 399, 205, 33);
 		btn_suppMembre.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				//La methode supprimer_employer permet de supprimer un employer de la base de donnees.
+				
+				int row = table.getSelectedRow();
+		        Integer id = (Integer) table.getModel().getValueAt(row, 0);	
+		        
+		        
+		        try {
+		        	
+					String query = "delete from MembreInfo where ID= "+ id  ;
+					PreparedStatement pst = connection.prepareStatement(query);
+					boolean rs = pst.execute();
+					String query1 = "select ID,Nom,Telephone from MembreInfo";
+					PreparedStatement pst1 = connection.prepareStatement(query1);
+					ResultSet rs1 = pst1.executeQuery();
+					table.setModel(DbUtils.resultSetToTableModel(rs1));
+					
+				} catch (SQLException e1) {
+					
+					e1.printStackTrace();
+				}
 				
 			}
 		});
