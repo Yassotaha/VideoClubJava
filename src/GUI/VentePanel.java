@@ -8,11 +8,19 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+
+import Main.sqliteConnection;
+import net.proteanit.sql.DbUtils;
+
 import javax.swing.JScrollBar;
 import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
@@ -28,11 +36,12 @@ public class VentePanel extends JPanel {
 	private JTable table;
 	private JTextField textField;
 	private JLabel Total;
+	public static Connection connection = null;
 	/**
 	 * Create the panel.
 	 */
 	public VentePanel() {
-		
+		connection = sqliteConnection.dbConnector();
 		setBounds(new Rectangle(0, 0, 940, 438));
 		setLayout(null);
 		
@@ -131,7 +140,18 @@ public class VentePanel extends JPanel {
 		JButton btnAjouter = new JButton("Ajouter");
 		btnAjouter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String textFieldValue = textField.getText();
+				int cher = Integer.parseInt(textFieldValue);
 				
+				try {
+					String query = "select * from FilmInfo where ID = " + cher;
+					PreparedStatement pst = connection.prepareStatement(query);
+					ResultSet rs = pst.executeQuery();
+					table.setModel(DbUtils.resultSetToTableModel(rs));
+				} catch (SQLException e1) {
+					
+					e1.printStackTrace();
+				}
 							
 			/*if(RangerVide == true)
 		{
