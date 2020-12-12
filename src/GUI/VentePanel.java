@@ -166,24 +166,27 @@ public class VentePanel extends JPanel {
 				String textFieldValue = EntrerCodeProduit.getText();
 				int cher = Integer.parseInt(textFieldValue);
 				
-				connection = sqliteConnection.dbConnector();
-				
-				
 				try {
-					
-					
-					String query = "select * from FilmInfo where ID=?"; 
+					String query = "select * from FilmInfo where ID = " + cher;
 					PreparedStatement pst = connection.prepareStatement(query);
-					pst.setString(1, EntrerCodeProduit.getText());
-					
 					ResultSet rs = pst.executeQuery();
+					table.setModel(DbUtils.resultSetToTableModel(rs));
+				} catch (SQLException e1) {
 					
-					
-				} 
-				
-				catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
+				}
+							
+			/*if(RangerVide == true)
+		{
+			for(int j = 0; j < membre[noRangerVide].length ; j++)
+			{
+				if(j == 0 && isAchat == true)
+				{
+					membre[noRangerVide][j] = "Acheter"; 
+				}
+				else if(j == 1 && isAchat == false)
+				{
+					membre[noRangerVide][j] = "Louer";
 				}
 				
 			
