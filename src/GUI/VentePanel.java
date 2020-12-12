@@ -170,6 +170,10 @@ public class VentePanel extends JPanel {
 					String query = "select * from FilmInfo where ID = " + cher;
 					PreparedStatement pst = connection.prepareStatement(query);
 					ResultSet rs = pst.executeQuery();
+					//Ajouter une variable une row pour l'affichage
+					//https://stackoverflow.com/questions/3549206/how-to-add-row-in-jtable#:~:text=To%20create%20the%20table%20with,model%20%3D%20(DefaultTableModel)%20table
+					//https://www.tutorialspoint.com/java-resultset-insertrow-method-with-example
+					
 					table.setModel(DbUtils.resultSetToTableModel(rs));
 				} catch (SQLException e1) {
 					

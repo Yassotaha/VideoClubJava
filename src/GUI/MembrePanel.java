@@ -71,9 +71,9 @@ public class MembrePanel extends JPanel {
 				String TelValue = Telephone.getText();
 				
 				String CreditValue= Cartedecredit.getText();
-				Long  CreditValue1 = Long.parseLong(CreditValue);
+				//Long  CreditValue1 = Long.parseLong(CreditValue);
 				
-				String CodeValue= Cartedecredit.getText();
+				String CodeValue= CodeSecret.getText();
 				Integer CodeValue1 = Integer.parseInt(CodeValue);
 				
 				
@@ -85,7 +85,7 @@ public class MembrePanel extends JPanel {
 					PreparedStatement pst = connection.prepareStatement(query);
 					pst.setString(1, NomValue);
 					pst.setString(2, TelValue);
-					pst.setLong(3, CreditValue1);
+					pst.setString(3, CreditValue);
 					pst.setInt(4, CodeValue1);
 
 					boolean rs = pst.execute();
