@@ -173,8 +173,24 @@ public class VentePanel extends JPanel {
 					//Ajouter une variable une row pour l'affichage
 					//https://stackoverflow.com/questions/3549206/how-to-add-row-in-jtable#:~:text=To%20create%20the%20table%20with,model%20%3D%20(DefaultTableModel)%20table
 					//https://www.tutorialspoint.com/java-resultset-insertrow-method-with-example
+
+//					TableModel model = DbUtils.resultSetToTableModel(rs);
+//					for(int i = 0; i < model.getColumnCount(); i++)
+//					{
+//						for(int j = 0; j < model.getRowCount(); j++)
+//						{
+//							System.out.println(model.getValueAt(i, j));
+//						}
+//					}
 					
-					table.setModel(DbUtils.resultSetToTableModel(rs));
+//					Object [] tab = new Object [] {"Acheter", "", rs.getInt("ID"), rs.getString("Titre"), rs.getInt("Année"), rs.getDouble("Prix de location"), rs.getDouble("Prix de d'Achat"), rs.getInt("Stock"), rs.getString("Catégorie")};
+//					DefaultTableModel modelTest = new DefaultTableModel (tab, 1);
+					
+					Object [] [] tab = new Object [][] {{null, null} , {"Acheter", ""}};
+					DefaultTableModel modelTest = new DefaultTableModel (tab, 2);
+					table.setModel(modelTest);
+			        
+//					table.setModel(DbUtils.resultSetToTableModel(rs));
 				} catch (SQLException e1) {
 					
 					e1.printStackTrace();

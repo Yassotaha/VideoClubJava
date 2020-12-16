@@ -34,6 +34,8 @@ public class MainGUI {
 	private JPanel panel_2;
 	private GridBagConstraints gbc_panel_2;
 	
+	//Temporaire pour l'instant; ID sauvegarder ici
+	public static String ID = null;
 
 	/**
 	 * Launch the application.
@@ -159,6 +161,7 @@ public class MainGUI {
 		//TextFieldID
 		textField = new JTextField();
 		textField.setBounds(244, 6, 109, 20);
+		textField.setText(ID);
 		panel_2.add(textField);
 		textField.setEditable(false);
 		textField.setColumns(10);

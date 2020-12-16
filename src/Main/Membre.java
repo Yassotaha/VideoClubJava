@@ -53,4 +53,19 @@ public class Membre {
 			this.codeSecret = codeSecret;
 		}
 	
+		
+		
+//		public static void createMembre(String nom, String noTelephone, int noCarte, int codeSecret)
+//		{
+//			Membre membre = new Membre(nom, noTelephone, noCarte, codeSecret);
+//		}
+//		
+//		
+//		public static void ajouterMembreADatabase()
+//		{
+//			
+//		}
+		
+		
+		
 }
