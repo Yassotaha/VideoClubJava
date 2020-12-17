@@ -1,6 +1,8 @@
 package GUI;
 
 import java.sql.*;
+import java.text.ParseException;
+
 import javax.swing.*;
 
 import Main.BackEnd;
@@ -168,6 +170,16 @@ public class MainGUI {
 		
 		//ButtonNotification
 		JButton btnNewButton_1 = new JButton("Notification");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					Main.Location.calculeRetard();
+				} catch (ParseException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		btnNewButton_1.setBounds(244, 34, 109, 34);
 		panel_2.add(btnNewButton_1);
 		
