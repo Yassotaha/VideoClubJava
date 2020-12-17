@@ -132,6 +132,10 @@ public class LoginFrame {
 							Main.BackEnd.setEstSup(false);
 						}
 						
+						
+//						Afficher/Add ID in MainGUI
+						MainGUI.ID = IDField.getText();
+						
 //						Cache et détruit le LoginFrame pour ensuite 
 //						créer un MainFrame qui prendra sa place				
 						hideLoginFrame();
