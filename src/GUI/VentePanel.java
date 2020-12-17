@@ -1,5 +1,6 @@
 package GUI;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Rectangle;
 import Main.sqliteConnection;
@@ -7,6 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -47,6 +50,10 @@ public class VentePanel extends JPanel {
 		setBounds(new Rectangle(0, 0, 940, 438));
 		setLayout(null);
 		
+		JLabel lblPopcornamount = new JLabel("PopcornAmount");
+		lblPopcornamount.setBounds(293, 91, 65, 14);
+		add(lblPopcornamount);
+		
 		JButton btnPopcorn = new JButton("Popcorn:");
 		btnPopcorn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -54,16 +61,19 @@ public class VentePanel extends JPanel {
 				TotalPopcorn += i;
 				
 				
-				lblPopcornamount.setText("x :" + " " + TotalPopcorn);
+				String TotalPopcornString = Float.toString(TotalPopcorn);
+				   
+			    
+				lblPopcornamount.setText(String.format(TotalPopcornString));
 				
 			}
 		});
 		btnPopcorn.setBounds(155, 61, 128, 74);
 		add(btnPopcorn);
 		
-		JLabel lblPopcornamount = new JLabel("PopcornAmount");
-		lblPopcornamount.setBounds(293, 91, 65, 14);
-		add(lblPopcornamount);
+		JLabel lblBonbonsamount = new JLabel("BonbonsAmount");
+		lblBonbonsamount.setBounds(672, 91, 65, 14);
+		add(lblBonbonsamount);
 		
 		JButton btnBonbons = new JButton("Bonbons:");
 		btnBonbons.addActionListener(new ActionListener() {
@@ -71,66 +81,58 @@ public class VentePanel extends JPanel {
 				
 				TotalBonbons += i;
 				
+				String TotalBonbonString = Float.toString(TotalBonbons);
 				
-				lblBonbonsamount.setText("x :" + " " + TotalBonbons);
+				
+				lblBonbonsamount.setText(String.format(TotalBonbonString));
 			}
 		});
 		btnBonbons.setBounds(534, 61, 128, 74);
 		add(btnBonbons);
 		
-		JLabel lblBonbonsamount = new JLabel("BonbonsAmount");
-		lblBonbonsamount.setBounds(672, 91, 65, 14);
-		add(lblBonbonsamount);
+		
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(52, 160, 859, 144);
 		add(scrollPane);
 		
 		
-		table = new JTable();
+		/*Object[] columns = {"ID","Firstname","Lastname","Age","Firstname","Lastname","Age"};*/
+		
+		JTable table = new JTable();
 		scrollPane.setViewportView(table);
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, "james bond", "10", "3", "3", "4"},
-				{null, null, "thor", "10", "3", "5", "5"},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-			},
-			new String[] {
-				"Acheter", "Louer", "Titre", "Prix achat", "Prix location", "Quantit\u00E9 achat", "Quantit\u00E9 location"
-			}
-		));
+		
+		DefaultTableModel model = new DefaultTableModel(); 
+		//model.setColumnIdentifiers(columns);
+		
+		model.addColumn("ID");
+		model.addColumn("Titre");
+		model.addColumn("Année");
+		model.addColumn("Prix");
+		model.addColumn("Stock");
+		model.addColumn("Catégorie");
+		
+			//table.setModel(model);
+		
+		
+		
+		
 		
 		JRadioButton rdbtnLouer = new JRadioButton("Louer");
 		rdbtnLouer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
-				boolean isAchat = false;
-			
+				
+				
+					boolean isAchat = false;
+					
+					
+					
 			}
 		});
 		rdbtnLouer.setBounds(52, 371, 109, 23);
 		add(rdbtnLouer);
+		
 		
 		JRadioButton rdbtnAcheter = new JRadioButton("Acheter");
 		
@@ -138,7 +140,10 @@ public class VentePanel extends JPanel {
 		rdbtnAcheter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
+			
+		
 			boolean isAchat = true;
+			
 			
 			
 			
@@ -146,6 +151,9 @@ public class VentePanel extends JPanel {
 			
 					
 		});
+		
+		
+		
 		
 		
 		rdbtnAcheter.setBounds(52, 333, 109, 23);
@@ -160,9 +168,17 @@ public class VentePanel extends JPanel {
 		lblCodeProduit.setBounds(221, 333, 78, 14);
 		add(lblCodeProduit);
 		
+
+		
 		JButton btnAjouter = new JButton("Ajouter");
 		btnAjouter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				if (EntrerCodeProduit.getText() == null) {
+				JOptionPane.showMessageDialog(null, "Veuillez cochez une option Acheter ou Louez");
+				}
+				else {
+				
 				String textFieldValue = EntrerCodeProduit.getText();
 				int cher = Integer.parseInt(textFieldValue);
 				
@@ -174,112 +190,67 @@ public class VentePanel extends JPanel {
 					//https://stackoverflow.com/questions/3549206/how-to-add-row-in-jtable#:~:text=To%20create%20the%20table%20with,model%20%3D%20(DefaultTableModel)%20table
 					//https://www.tutorialspoint.com/java-resultset-insertrow-method-with-example
 					
-					table.setModel(DbUtils.resultSetToTableModel(rs));
+					Object[] row = new Object[6];
+					
+					//System.out.print(isAchat);
+					
+					if (rdbtnLouer.isSelected()) {
+					
+				
+					row [0] = rs.getInt("ID");
+					row [1] = rs.getString("Titre");
+					row [2] = rs.getInt("Année");
+					row [3] = rs.getDouble("Prix de location");
+					row [4] = rs.getInt("Stock");
+					row [5] = rs.getString("Catégorie");
+					
+					model.addRow(row);
+					table.setModel(model);
+					
+					}
+					else if (rdbtnAcheter.isSelected()) {
+						row [0] = rs.getInt("ID");
+						row [1] = rs.getString("Titre");
+						row [2] = rs.getInt("Année");
+						row [3] = rs.getDouble("Prix d'achat");
+						row [4] = rs.getInt("Stock");
+						row [5] = rs.getString("Catégorie");
+						model.addRow(row);
+						table.setModel(model);
+						
+						
+					   }
+					double total = 0;
+					
+				    for(int i = 0; i < table.getRowCount(); i++){
+				       
+				        double MontantAchat = Double.parseDouble(table.getValueAt(i, 3)+"");
+				        total = MontantAchat+total;
+				        //System.out.println(total);
+				    }
+				    
+				   total = total + (TotalPopcorn*3) + (TotalBonbons*1.5);
+				   
+				    float TotalFloat = (float)total;
+				    
+				    String TotalFinal = Float.toString(TotalFloat);
+				   
+				    
+				   Total.setText(String.format(TotalFinal));
+					
+					
+					
+					
+				
 				} catch (SQLException e1) {
 					
 					e1.printStackTrace();
 				}
-							
-			/*if(RangerVide == true)
-		{
-			for(int j = 0; j < membre[noRangerVide].length ; j++)
-			{
-				if(j == 0 && isAchat == true)
-				{
-					membre[noRangerVide][j] = "Acheter"; 
-				}
-				else if(j == 1 && isAchat == false)
-				{
-					membre[noRangerVide][j] = "Louer";
-				}
 				
-			
-				
-				
-				
-				
-				
-				//Colonne vide ou pas
-				
-				/*for(int i = 0; i < membre.length && RangerVide != true; i++)
-				{
-					if(membre[i][0] == null && membre[i][1] == null)
-					{
-						RangerVide = true;
-						noRangerVide = i;
-					}
-					
-					
-					
-					//si on a fini de lire le tableau et qu,il n,y a pas de place libre (agrandir size du tab)
-				}
-				
-=======
-				try {
-					String query = "select * from FilmInfo where ID = " + cher;
-					PreparedStatement pst = connection.prepareStatement(query);
-					ResultSet rs = pst.executeQuery();
-					table.setModel(DbUtils.resultSetToTableModel(rs));
-				} catch (SQLException e1) {
-					
-					e1.printStackTrace();
-				}
->>>>>>> branch 'master' of https://github.com/Yassotaha/ProjetModelisation2020.git
-							
-			if(RangerVide == true)
-			 
-		{
-			for(int j = 0; j < membre[noRangerVide].length ; j++)
-			{
-				if(j == 0 && isAchat == true)
-				{
-					membre[noRangerVide][j] = "Acheter"; 
-				}
-				else if(j == 1 && isAchat == false)
-				{
-					membre[noRangerVide][j] = "Louer";
-				}
-				//colonne louer
-				else if(j == 6)
-				{
-					if(isAchat == false)
-					{
-						membre[noRangerVide][j] = databaseTabRetour[j-2];
-						//m/thode incrementer prix total
-					}
-					else
-					{
-						membre[noRangerVide][j] = "-";
-					}
-							
-				}
-				//colonne acheter
-				else if(j == 7)
-				{
-					if(isAchat == true)
-					{
-						membre[noRangerVide][j] = databaseTabRetour[j-2];
-						//m/thode incrementer prix total
-					}
-					else
-					{
-						membre[noRangerVide][j] = "-";
-					}
-				}
-				else
-				{
-					membre[noRangerVide][j] = databaseTabRetour[j-2];
-				}
-				
-			}
-		}
-		
-	}
-			
-			 
-			 */
+				EntrerCodeProduit.setText("");
 				rdbtnLouer.setSelected(false);
 				rdbtnAcheter.setSelected(false);
+			}
 			}
 		});
 		btnAjouter.setBounds(354, 349, 89, 23);
@@ -298,39 +269,45 @@ public class VentePanel extends JPanel {
 		btnPayer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				int total = 0;
-				
-			    for(int i = 0; i < table.getRowCount(); i++){
-			       
-			        int MontantAchat = Integer.parseInt(table.getValueAt(i, 3)+"");
-			        total = MontantAchat+total;
-			        System.out.println(total);
-			    }
-			    for(int i = 0; i < table.getRowCount(); i++){
-				       
-			        int MontantLouer = Integer.parseInt(table.getValueAt(i, 4)+"");
-			        total = MontantLouer+total;
-			        System.out.println(total);
-			    }
-			    
-			   
-			    
-			    Total.setText("" + total);
+				JOptionPane.showMessageDialog(null, "Facture imprimée");
 			
-		
+				int rowCount = model.getRowCount();
+				for (int i = rowCount - 1; i >= 0; i--) {
+				    model.removeRow(i);
+				}
 				
+				TotalPopcorn = 0;
+				TotalBonbons = 0;
+				
+				lblPopcornamount.setText("");
+				lblBonbonsamount.setText("");
+				Total.setText("");
 			}
-			
-		});
+			});
 		btnPayer.setBounds(562, 371, 157, 56);
 		add(btnPayer);
 		
-		JLabel lblTotal1 = new JLabel("Total : ");
-		lblTotal1.setBounds(729, 353, 48, 14);
-		add(lblTotal1);
+		JButton btnRecommencer = new JButton("Recommencer");
+		btnRecommencer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int rowCount = model.getRowCount();
+				for (int i = rowCount - 1; i >= 0; i--) {
+				    model.removeRow(i);
+				}
+				
+				TotalPopcorn = 0;
+				TotalBonbons = 0;
+				
+				lblPopcornamount.setText("");
+				lblBonbonsamount.setText("");
+				Total.setText("");
+				
+			}
+		});
+		btnRecommencer.setBounds(354, 388, 109, 23);
+		add(btnRecommencer);
 		
-		
-	
 		
 		
 		
