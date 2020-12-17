@@ -2,6 +2,7 @@ package GUI;
 
 import javax.swing.JPanel;
 
+
 import javax.swing.JTable;
 import javax.swing.JScrollBar;
 import java.awt.Rectangle;
@@ -22,20 +23,20 @@ import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
+import Main.*;
 import java.awt.Font;
 import Main.sqliteConnection;
 
 public class MembrePanel extends JPanel {
-	private JTextField CodeSecret;
-	private JTextField Cartedecredit;
-	private JTextField Telephone;
+	private static JTextField CodeSecret;
+	private static JTextField Cartedecredit;
+	private static JTextField Telephone;
 	private JTextField textField_5;
 	private JTextField txtTlphone;
 	private JTextField textField_7;
 	private JTextField textField_8;
-	private JTextField Nom;
-	private JTable table;
+	private static JTextField Nom;
+	private static JTable table;
 	private JTextField textField_inputNomAModif;
 	private JTextField textField_nomAModif;
 	private JTextField textField_CodeSecretAModif;
@@ -58,7 +59,7 @@ public class MembrePanel extends JPanel {
 	 */
 	public MembrePanel() {
 		connection = sqliteConnection.dbConnector();
-		table = new JTable();
+		setTable(new JTable());
 		setBounds(new Rectangle(0, 0, 940, 438));
 		setLayout(null);
 		
@@ -67,13 +68,13 @@ public class MembrePanel extends JPanel {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//La methode enregistrer_employer permet d'enregistrer un nouveau employer dans la base de donnees.
-				String NomValue = Nom.getText();
-				String TelValue = Telephone.getText();
+				String NomValue = getNom().getText();
+				String TelValue = getTelephone().getText();
 				
-				String CreditValue= Cartedecredit.getText();
+				String CreditValue= getCartedecredit().getText();
 				//Long  CreditValue1 = Long.parseLong(CreditValue);
 				
-				String CodeValue= CodeSecret.getText();
+				String CodeValue= getCodeSecret().getText();
 				Integer CodeValue1 = Integer.parseInt(CodeValue);
 				
 				
@@ -92,7 +93,7 @@ public class MembrePanel extends JPanel {
 				String query1 = "select ID,Nom,Telephone from MembreInfo";
 					PreparedStatement pst1 = connection.prepareStatement(query1);
 					ResultSet rs1 = pst1.executeQuery();
-					table.setModel(DbUtils.resultSetToTableModel(rs1));
+					getTable().setModel(DbUtils.resultSetToTableModel(rs1));
 					
 				} catch (SQLException e1) {
 					
@@ -103,10 +104,10 @@ public class MembrePanel extends JPanel {
 		add(button);
 		
 
-		CodeSecret = new JTextField();
-		CodeSecret.setColumns(10);
-		CodeSecret.setBounds(684, 412, 180, 20);
-		add(CodeSecret);
+		setCodeSecret(new JTextField());
+		getCodeSecret().setColumns(10);
+		getCodeSecret().setBounds(684, 412, 180, 20);
+		add(getCodeSecret());
 
 		
 		
@@ -158,15 +159,15 @@ public class MembrePanel extends JPanel {
 		
 
 		
-		Cartedecredit = new JTextField();
-		Cartedecredit.setColumns(10);
-		Cartedecredit.setBounds(684, 381, 180, 20);
-		add(Cartedecredit);
+		setCartedecredit(new JTextField());
+		getCartedecredit().setColumns(10);
+		getCartedecredit().setBounds(684, 381, 180, 20);
+		add(getCartedecredit());
 		
-		Telephone = new JTextField();
-		Telephone.setColumns(10);
-		Telephone.setBounds(684, 350, 180, 20);
-		add(Telephone);
+		setTelephone(new JTextField());
+		getTelephone().setColumns(10);
+		getTelephone().setBounds(684, 350, 180, 20);
+		add(getTelephone());
 		
 		textField_5 = new JTextField();
 		textField_5.setText("    Nom:");
@@ -191,11 +192,11 @@ public class MembrePanel extends JPanel {
 		textField_8.setColumns(10);
 		textField_8.setBounds(545, 381, 134, 20);
 		add(textField_8);
-		
-		Nom = new JTextField();
-		Nom.setColumns(10);
-		Nom.setBounds(684, 322, 180, 20);
-		add(Nom);
+		//dghdghdfgh
+		setNom(new JTextField());
+		getNom().setColumns(10);
+		getNom().setBounds(684, 322, 180, 20);
+		add(getNom());
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(24, 11, 859, 298);
@@ -208,15 +209,15 @@ public class MembrePanel extends JPanel {
 			String query = "select ID,Nom,Telephone from MembreInfo";
 			PreparedStatement pst = connection.prepareStatement(query);
 			ResultSet rs = pst.executeQuery();
-			table.setModel(DbUtils.resultSetToTableModel(rs));
+			getTable().setModel(DbUtils.resultSetToTableModel(rs));
 		} catch (SQLException e1) {
 			
 			e1.printStackTrace();
 		}
 		
-		table.getColumnModel().getColumn(0).setPreferredWidth(291);
-		table.getColumnModel().getColumn(1).setPreferredWidth(356);
-		scrollPane.setViewportView(table);
+		getTable().getColumnModel().getColumn(0).setPreferredWidth(291);
+		getTable().getColumnModel().getColumn(1).setPreferredWidth(356);
+		scrollPane.setViewportView(getTable());
 		
 		
 		
@@ -225,13 +226,15 @@ public class MembrePanel extends JPanel {
 		btn_modifMembre.setBounds(34, 356, 205, 33);
 		btn_modifMembre.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				lblCompteModifier.setVisible(true);
-				lblRentrerModification.setVisible(true);
-				textField_inputNomAModif.setVisible(true);
-				textField_nomAModif.setVisible(true);
-				textField_CodeSecretAModif.setVisible(true);
-				textField_inputCodeSecretAModif.setVisible(true);
-				revalidate();
+				Membre.modifier_membre();
+				Membre.loadTablemembres();
+				//lblCompteModifier.setVisible(true);
+				//lblRentrerModification.setVisible(true);
+				//textField_inputNomAModif.setVisible(true);
+				//textField_nomAModif.setVisible(true);
+				//textField_CodeSecretAModif.setVisible(true);
+				//textField_inputCodeSecretAModif.setVisible(true);
+				//revalidate();
 			}
 		});
 		add(btn_modifMembre);
@@ -246,8 +249,8 @@ public class MembrePanel extends JPanel {
 				
 				//La methode supprimer_employer permet de supprimer un employer de la base de donnees.
 				
-				int row = table.getSelectedRow();
-		        Integer id = (Integer) table.getModel().getValueAt(row, 0);	
+				int row = getTable().getSelectedRow();
+		        Integer id = (Integer) getTable().getModel().getValueAt(row, 0);	
 		        
 		        
 		        try {
@@ -258,7 +261,7 @@ public class MembrePanel extends JPanel {
 					String query1 = "select ID,Nom,Telephone from MembreInfo";
 					PreparedStatement pst1 = connection.prepareStatement(query1);
 					ResultSet rs1 = pst1.executeQuery();
-					table.setModel(DbUtils.resultSetToTableModel(rs1));
+					getTable().setModel(DbUtils.resultSetToTableModel(rs1));
 					
 				} catch (SQLException e1) {
 					
@@ -307,6 +310,73 @@ public class MembrePanel extends JPanel {
 		lblRentrerModification.setVisible(false);
 		add(lblRentrerModification);
 
+	}
+
+
+
+	public static JTextField getNom() {
+		return Nom;
+	}
+
+
+
+	public void setNom(JTextField nom) {
+		Nom = nom;
+	}
+
+
+
+	public static JTextField getTelephone() {
+		return Telephone;
+	}
+
+
+
+	public void setTelephone(JTextField telephone) {
+		Telephone = telephone;
+	}
+
+
+
+	public static JTextField getCodeSecret() {
+		return CodeSecret;
+	}
+
+
+
+	public void setCodeSecret(JTextField codeSecret) {
+		CodeSecret = codeSecret;
+	}
+
+
+
+	public static JTextField getCartedecredit() {
+		return Cartedecredit;
+	}
+
+
+
+	public void setCartedecredit(JTextField cartedecredit) {
+		Cartedecredit = cartedecredit;
+	}
+
+
+
+	public static JTable getTable() {
+		return table;
+	}
+
+
+
+	public void setTable(JTable table) {
+		this.table = table;
+	}
+
+
+
+	public static JTable getModel() {
+		// TODO Auto-generated method stub
+		return table;
 	}
 
 

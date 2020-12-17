@@ -66,8 +66,33 @@ public class Film {
 			e1.printStackTrace();				}
 		
 	}
+	//Methode pour la modification des films dans la base de donnees
+	public static void modifier_film() {
+		
+		String Stock= InventairePanel.getStock1().getText();
+		String ID1 = InventairePanel.getId_field().getText();
+		Integer ID = Integer.parseInt(ID1);
+		
+     try {
+        	
+		
+       	String query = "UPDATE FilmInfo SET Stock = ? WHERE ID = ?";
+			PreparedStatement pst = conn.prepareStatement(query);
+			pst.setString(1, Stock);
+			pst.setInt(2, ID);
+			
+
+			boolean rs = pst.execute();
+		
+			
+		} catch (SQLException e1) {
+			
+			e1.printStackTrace();				}
+		
+	}
 		
 		// permet d'affichier la table de films
+	//prmetrre de 
 				public static void loadTableFilms() {
 					try {
 						String query = "select * from FilmInfo";

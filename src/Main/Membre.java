@@ -1,13 +1,16 @@
 package Main;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import GUI.*;
+import net.proteanit.sql.DbUtils;
 
 
 
@@ -27,9 +30,53 @@ public class Membre {
 			this.noCarte = noCarte;
 			this.codeSecret = codeSecret;
 		}
+		//Methode pour la modification des des membres dans la base de donnees
+		public static void modifier_membre() {
+			
+			String nom= MembrePanel.getNom().getText();
+			String Telephone = MembrePanel.getTelephone().getText();
+			//Integer Telephone1 = Integer.parseInt(Telephone);
+			String CodeSecret= MembrePanel.getCodeSecret().getText();
+			Integer CodeSecret1 = Integer.parseInt(CodeSecret);
+			String Cartedecredit = MembrePanel.getCartedecredit().getText();
+			 int row = MembrePanel.getTable().getSelectedRow();
+		        Object id =  MembrePanel.getModel().getValueAt(row, 0);	
+			
+	     try {
+	    
+			
+	       	String query = "UPDATE MembreInfo SET Nom = ?, Telephone = ?, CodeSecret = ?, credit = ? WHERE ID = ?" + id;
+				PreparedStatement pst = conn.prepareStatement(query);
+				pst.setString(1, nom);
+				pst.setString(2, Telephone);
+				pst.setInt(3, CodeSecret1);
+				pst.setString(4, Cartedecredit);
+			//	pst.setInt(5, id);
+				
+
+				boolean rs = pst.execute();
+			
+				
+			} catch (SQLException e1) {
+				
+				e1.printStackTrace();				}
+			
+		}
+		// permet d'affichier la table des membres
+		public static void loadTablemembres() {
+			try {
+				String query = "select * from MembreInfo";
+				PreparedStatement pst = conn.prepareStatement(query);
+				ResultSet rs = pst.executeQuery();
+				MembrePanel.getTable().setModel(DbUtils.resultSetToTableModel(rs));
+			} catch (SQLException e1) {
+				
+				e1.printStackTrace();
+			}
+		}
 		
 				
-	
+	//dfghdghdfgh
 	//Getters (Accesseurs)
 		public String getNom(){
 			return this.nom;
