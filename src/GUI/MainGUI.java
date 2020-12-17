@@ -72,6 +72,8 @@ public class MainGUI {
 		initialize();
 	}
 
+
+
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -355,5 +357,7 @@ public class MainGUI {
 		frame.setVisible(false);
 	}
 	
+		
+		}
 	
-}
+	

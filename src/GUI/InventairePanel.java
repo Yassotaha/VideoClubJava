@@ -60,7 +60,7 @@ public class InventairePanel extends JPanel
 	private JLabel lblArticleModifier;
 	private JLabel lblFilmModifier;
 	private JTextField textField;
-	private JTextField textField_1;
+	private static JTextField Stock1;
 	private JButton btnNewButton_4;
 	private JButton btnModifieArticle;
 	
@@ -166,7 +166,7 @@ public class InventairePanel extends JPanel
 			public void actionPerformed(ActionEvent e) {
 				
 				lblFilmModifier.setVisible(true);
-				textField_1 .setVisible(true);
+				getStock1() .setVisible(true);
 				textField.setVisible(true);
 				btnNewButton_4.setVisible(true);
 				revalidate();
@@ -320,18 +320,19 @@ public class InventairePanel extends JPanel
 		textField.setVisible(false);
 		add(textField);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(296, 278, 53, 20);
-		textField_1.setVisible(false);
-		add(textField_1);
+		setStock1(new JTextField());
+		getStock1().setColumns(10);
+		getStock1().setBounds(296, 278, 53, 20);
+		getStock1().setVisible(false);
+		add(getStock1());
 		
 		btnNewButton_4 = new JButton("Modifie film");
 		btnNewButton_4.setBounds(192, 303, 89, 23);
 		btnNewButton_4.setVisible(false);
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				Film.modifier_film();
+				Film.loadTableFilms();
 			
 			}
 		});
@@ -359,10 +360,6 @@ public class InventairePanel extends JPanel
 		txtIdFilm.setBounds(382, 318, 59, 20);
 		add(txtIdFilm);
 		
-		 Categorie = new JTextField();
-		Categorie.setBounds(778, 318, 86, 20);
-		add(Categorie);
-		Categorie.setColumns(10);
 		
 
 	}
@@ -436,5 +433,13 @@ public class InventairePanel extends JPanel
 
 	public void setCategorie(JTextField categorie) {
 		this.Categorie = categorie;
+	}
+
+	public static JTextField getStock1() {
+		return Stock1;
+	}
+
+	public void setStock1(JTextField stock1) {
+		this.Stock1 = stock1;
 	}
 }
