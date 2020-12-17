@@ -40,21 +40,26 @@ public class Film {
 		//Integer CodeValue1 = Integer.parseInt(InventairePanel.CodeValue);
 		String Prixdachat= InventairePanel.getPrixdachat().getText();
 		Integer Prixdachat1 = Integer.parseInt(Prixdachat);
+		String Nouveaute = (InventairePanel.getNouveaute().getText());
+		String Bluray = (InventairePanel.getBluray().getText());
 		String Stock= InventairePanel.getStock().getText();
 		String Categorie= InventairePanel.getCategorie().getText();
+		System.out.println(Nouveaute);
 		
 		
      try {
         	
 		//String query = "INSERT INTO MembreInfo (`Nom`,Telephone,Credit,CodeSecret) Values("+NomValue+","+TelValue+","+CreditValue2+","+CodeValue2+")";*/
-       	String query = "INSERT INTO FilmInfo (Titre,Annee,PrixDeLocation,PrixAchat,Stock,Categorie) Values(?,?,?,?,?,?)";
+       	String query = "INSERT INTO FilmInfo (Titre,Annee,PrixDeLocation,PrixAchat,Nouveaute,Bluray,Stock,Categorie) Values(?,?,?,?,?,?,?,?)";
 			PreparedStatement pst = conn.prepareStatement(query);
 			pst.setString(1, Titre);
 			pst.setString(2, Annee);
 			pst.setString(3, Prixdelocation);
 			pst.setInt(4, Prixdachat1);
-			pst.setString(5, Stock);
-			pst.setString(6, Categorie);
+			pst.setString(5, Nouveaute);
+			pst.setString(6, Bluray);
+			pst.setString(7, Stock);
+			pst.setString(8, Categorie);
 		
 
 			boolean rs = pst.execute();

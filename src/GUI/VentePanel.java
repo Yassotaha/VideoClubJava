@@ -76,7 +76,7 @@ public class VentePanel extends JPanel {
 		add(Total);
 		Total.setText(String.format(""));
 		
-		JLabel lblPopcornamount = new JLabel("PopcornAmount");
+		JLabel lblPopcornamount = new JLabel("");
 		lblPopcornamount.setBounds(293, 91, 65, 14);
 		add(lblPopcornamount);
 		
@@ -120,7 +120,7 @@ public class VentePanel extends JPanel {
 		btnPopcorn.setBounds(155, 61, 128, 74);
 		add(btnPopcorn);
 		
-		JLabel lblBonbonsamount = new JLabel("BonbonsAmount");
+		JLabel lblBonbonsamount = new JLabel("");
 		lblBonbonsamount.setBounds(672, 91, 65, 14);
 		add(lblBonbonsamount);
 		
@@ -297,7 +297,7 @@ public class VentePanel extends JPanel {
 				}
 			}
 		});
-		btnAjouter.setBounds(354, 349, 89, 23);
+		btnAjouter.setBounds(354, 349, 128, 23);
 		add(btnAjouter);
 		
 		
@@ -354,7 +354,7 @@ public class VentePanel extends JPanel {
 				
 			}
 		});
-		btnRecommencer.setBounds(354, 388, 109, 23);
+		btnRecommencer.setBounds(354, 388, 128, 23);
 		add(btnRecommencer);
 		
 		
