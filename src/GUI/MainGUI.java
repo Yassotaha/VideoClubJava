@@ -1,6 +1,8 @@
 package GUI;
 
 import java.sql.*;
+import java.text.ParseException;
+
 import javax.swing.*;
 
 import Main.BackEnd;
@@ -34,6 +36,12 @@ public class MainGUI {
 	private JPanel panel_2;
 	private GridBagConstraints gbc_panel_2;
 	
+	public static String amende1;
+	public static String amende2;
+	public static String amende3;
+	public static String amende4;
+	public static String amende5;
+	
 	//Temporaire pour l'instant; ID sauvegarder ici
 	public static String ID = null;
 
@@ -63,6 +71,8 @@ public class MainGUI {
 	public MainGUI() {
 		initialize();
 	}
+
+
 
 	/**
 	 * Initialize the contents of the frame.
@@ -168,6 +178,17 @@ public class MainGUI {
 		
 		//ButtonNotification
 		JButton btnNewButton_1 = new JButton("Notification");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					Main.Location.calculeRetard();
+					JOptionPane.showMessageDialog(null, amende1+"\n"+"\n"+amende2+"\n"+"\n"+amende3+"\n"+"\n"+amende4+"\n"+"\n"+amende5);
+				} catch (ParseException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		btnNewButton_1.setBounds(244, 34, 109, 34);
 		panel_2.add(btnNewButton_1);
 		
@@ -337,5 +358,7 @@ public class MainGUI {
 		frame.setVisible(false);
 	}
 	
+		
+		}
 	
-}
+	

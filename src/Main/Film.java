@@ -1,5 +1,17 @@
 package Main;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import GUI.*;
+import GUI.InventairePanel;
+import net.proteanit.sql.DbUtils;
+
 public class Film {
 
 	//Attributs
@@ -9,7 +21,7 @@ public class Film {
 		private double prixAchat;
 		private int stock; //quantité
 		private String categorie;
-		
+		static Connection conn =sqliteConnection.dbConnector();
 		
 	//Constructeur
 		public Film(String titre, int annee, double prixLocation, double prixAchat, int stock, String categorie) {
@@ -20,6 +32,79 @@ public class Film {
 			this.stock = stock;
 			this.categorie = categorie;
 		}
+		
+		//Methode pour la creation des films
+	public static void creer_film() {
+		String Titre = InventairePanel.getTitre().getText();
+		String Année = InventairePanel.getAnnée().getText();
+		String Prixdelocation= InventairePanel.getPrixdelocation().getText();
+		//Integer CodeValue1 = Integer.parseInt(InventairePanel.CodeValue);
+		String Prixdachat= InventairePanel.getPrixdachat().getText();
+		Integer Prixdachat1 = Integer.parseInt(Prixdachat);
+		String Stock= InventairePanel.getStock().getText();
+		String Categorie= InventairePanel.getCategorie().getText();
+		
+		
+     try {
+        	
+		//String query = "INSERT INTO MembreInfo (`Nom`,Telephone,Credit,CodeSecret) Values("+NomValue+","+TelValue+","+CreditValue2+","+CodeValue2+")";*/
+       	String query = "INSERT INTO FilmInfo (Titre,Annee,PrixDeLocation,PrixAchat,Stock,Categorie) Values(?,?,?,?,?,?)";
+			PreparedStatement pst = conn.prepareStatement(query);
+			pst.setString(1, Titre);
+			pst.setString(2, Année);
+			pst.setString(3, Prixdelocation);
+			pst.setInt(4, Prixdachat1);
+			pst.setString(5, Stock);
+			pst.setString(6, Categorie);
+		
+
+			boolean rs = pst.execute();
+		
+			
+		} catch (SQLException e1) {
+			
+			e1.printStackTrace();				}
+		
+	}
+	//Methode pour la modification des films dans la base de donnees
+	public static void modifier_film() {
+		
+		String Stock= InventairePanel.getStock1().getText();
+		String ID1 = InventairePanel.getId_field().getText();
+		Integer ID = Integer.parseInt(ID1);
+		
+     try {
+        	
+		
+       	String query = "UPDATE FilmInfo SET Stock = ? WHERE ID = ?";
+			PreparedStatement pst = conn.prepareStatement(query);
+			pst.setString(1, Stock);
+			pst.setInt(2, ID);
+			
+
+			boolean rs = pst.execute();
+		
+			
+		} catch (SQLException e1) {
+			
+			e1.printStackTrace();				}
+		
+	}
+		
+		// permet d'affichier la table de films
+	//prmetrre de 
+				public static void loadTableFilms() {
+					try {
+						String query = "select * from FilmInfo";
+						PreparedStatement pst = conn.prepareStatement(query);
+						ResultSet rs = pst.executeQuery();
+						InventairePanel.getTableInventaire().setModel(DbUtils.resultSetToTableModel(rs));
+					} catch (SQLException e1) {
+						
+						e1.printStackTrace();
+					}
+				}
+
 	
 		
 	//Getters (Accesseurs)
@@ -72,6 +157,7 @@ public class Film {
 		public void setCategorie(String categorie){
 			this.categorie = categorie;
 		}
+		
 	
 	
 	

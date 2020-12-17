@@ -1,18 +1,25 @@
 package Main;
 
 import java.nio.file.Paths;
+
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
+import GUI.*;
+import net.proteanit.sql.DbUtils;
+
+
 public class sqliteConnection {
 	
-static Connection conn = null;
-	
+static Connection conn =dbConnector();
+
 	public static Connection dbConnector() {
 		
 		try {
@@ -30,6 +37,33 @@ static Connection conn = null;
 			return null;
 		}
 	}
+	/*
+	//La methode supprimer_membre permet de supprimer un employer de la base de donnees "UsersData.db".
+	public static void supprimer_membre() {
+		try {
+		String query = "delete from employee where empid = '"+ id"'";
+			PreparedStatement pst=conn.prepareStatement(query);
+			pst.execute();
+			pst.close();
+		}catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}*/
+	//La methode supprimer_film permet de supprimer un film de la base de donnees "UsersData.db".
+		public static void supprimer_film() {
+			
+	
+	        
+			try {
+				String query = "delete from FilmInfo where ID= "+ InventairePanel.getId_field().getText()  ;
+				PreparedStatement pst = conn.prepareStatement(query);
+				pst.execute();
+				pst.executeUpdate();
+				pst.close();
+			}catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		}
 	//La methode chercher_article permet de chercher un produit dans la base de donnees a partir de son ID.
 	public static void chercher_article() {
 		try {
