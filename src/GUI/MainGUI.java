@@ -21,6 +21,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.SystemColor;
 
 public class MainGUI {
 	
@@ -84,7 +85,7 @@ public class MainGUI {
 		
 		//Frame
 		frame = new JFrame();
-		frame.getContentPane().setBackground(Color.GRAY);
+		frame.getContentPane().setBackground(SystemColor.activeCaption);
 		frame.setBounds(100, 100, 1206, 750);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -130,7 +131,7 @@ public class MainGUI {
 		
 		//PanelStructural1
 		panel_1 = new JPanel();
-		panel_1.setBackground(Color.GRAY);
+		panel_1.setBackground(SystemColor.activeCaption);
 		
 		gbc_panel_1 = new GridBagConstraints();
 		gbc_panel_1.anchor = GridBagConstraints.EAST;
@@ -145,17 +146,17 @@ public class MainGUI {
 		
 		//LabelVideoClub
 		lblNewLabel = new JLabel("Vid\u00E9o Club");
-		lblNewLabel.setBackground(Color.DARK_GRAY);
+		lblNewLabel.setBackground(Color.WHITE);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		
 		panel_1.add(lblNewLabel);
 		
-		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 34));
+		lblNewLabel.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 65));
 		
 		//PanelStructural2
 		panel_2 = new JPanel();
-		panel_2.setBackground(Color.GRAY);
+		panel_2.setBackground(SystemColor.activeCaption);
 		panel_2.setLayout(null);
 		gbc_panel_2 = new GridBagConstraints();
 		gbc_panel_2.gridwidth = 2;
@@ -181,6 +182,7 @@ public class MainGUI {
 		
 		//ButtonNotification
 		JButton btnNewButton_1 = new JButton("Notification");
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -198,6 +200,7 @@ public class MainGUI {
 		
 		//ButtonSeDéconnecter
 		JButton btnNewButton_2 = new JButton("Se d\u00E9connecter");
+		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -223,7 +226,7 @@ public class MainGUI {
 		
 		//Panel Des Opérations (structural)
 		panelOperation = new JPanel();
-		panelOperation.setBackground(Color.GRAY);
+		panelOperation.setBackground(SystemColor.activeCaption);
 		GridBagConstraints gbc_panel = new GridBagConstraints();
 		gbc_panel.fill = GridBagConstraints.BOTH;
 		gbc_panel.insets = new Insets(0, 0, 5, 5);
@@ -241,7 +244,7 @@ public class MainGUI {
 		//ButtonVenteEtLocation
 		JButton btnVente = new JButton("Vente et Location");
 		btnVente.setBackground(UIManager.getColor("CheckBox.background"));
-		btnVente.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnVente.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnVente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				inventairePanel.setVisible(false);
@@ -272,7 +275,7 @@ public class MainGUI {
 			}
 			
 		});
-		btnMembre.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnMembre.setFont(new Font("Tahoma", Font.BOLD, 14));
 		GridBagConstraints gbc_btnMembre = new GridBagConstraints();
 		gbc_btnMembre.fill = GridBagConstraints.BOTH;
 		gbc_btnMembre.insets = new Insets(0, 0, 5, 0);
@@ -306,7 +309,7 @@ public class MainGUI {
 			
 		});
 		
-		btnInventaire.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnInventaire.setFont(new Font("Tahoma", Font.BOLD, 14));
 		GridBagConstraints gbc_btnInventaire = new GridBagConstraints();
 		gbc_btnInventaire.insets = new Insets(0, 0, 5, 0);
 		gbc_btnInventaire.fill = GridBagConstraints.BOTH;

@@ -123,13 +123,13 @@ public class InventairePanel extends JPanel
 		
 		
 		lblPopcorn = new JLabel("Popcorn:");
-		lblPopcorn.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblPopcorn.setBounds(59, 265, 84, 28);
+		lblPopcorn.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblPopcorn.setBounds(23, 374, 84, 28);
 		add(lblPopcorn);
 		
 		lblBonbon = new JLabel("Bonbon:");
-		lblBonbon.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblBonbon.setBounds(59, 344, 75, 28);
+		lblBonbon.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblBonbon.setBounds(23, 344, 75, 28);
 		add(lblBonbon);
 		
 		lblFilms = new JLabel("Films:");
@@ -141,9 +141,9 @@ public class InventairePanel extends JPanel
 		
 		textFieldNbPopcorn = new JTextField();
 		textFieldNbPopcorn.setText("45");
-		textFieldNbPopcorn.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		textFieldNbPopcorn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textFieldNbPopcorn.setColumns(10);
-		textFieldNbPopcorn.setBounds(155, 265, 53, 28);
+		textFieldNbPopcorn.setBounds(96, 345, 53, 28);
 		textFieldNbPopcorn.setEditable(false);
 		add(textFieldNbPopcorn);
 		
@@ -152,9 +152,9 @@ public class InventairePanel extends JPanel
 		
 		textFieldNbBonbon = new JTextField();
 		textFieldNbBonbon.setText("85");
-		textFieldNbBonbon.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		textFieldNbBonbon.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textFieldNbBonbon.setColumns(10);
-		textFieldNbBonbon.setBounds(155, 344, 53, 28);
+		textFieldNbBonbon.setBounds(96, 375, 53, 28);
 		textFieldNbBonbon.setEditable(false);
 		add(textFieldNbBonbon);
 		
