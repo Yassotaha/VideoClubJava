@@ -124,12 +124,12 @@ public class InventairePanel extends JPanel
 		
 		lblPopcorn = new JLabel("Popcorn:");
 		lblPopcorn.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblPopcorn.setBounds(23, 397, 84, 28);
+		lblPopcorn.setBounds(59, 265, 84, 28);
 		add(lblPopcorn);
 		
 		lblBonbon = new JLabel("Bonbon:");
 		lblBonbon.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblBonbon.setBounds(192, 397, 75, 28);
+		lblBonbon.setBounds(59, 344, 75, 28);
 		add(lblBonbon);
 		
 		lblFilms = new JLabel("Films:");
@@ -143,7 +143,7 @@ public class InventairePanel extends JPanel
 		textFieldNbPopcorn.setText("45");
 		textFieldNbPopcorn.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		textFieldNbPopcorn.setColumns(10);
-		textFieldNbPopcorn.setBounds(107, 397, 53, 28);
+		textFieldNbPopcorn.setBounds(155, 265, 53, 28);
 		textFieldNbPopcorn.setEditable(false);
 		add(textFieldNbPopcorn);
 		
@@ -154,7 +154,7 @@ public class InventairePanel extends JPanel
 		textFieldNbBonbon.setText("85");
 		textFieldNbBonbon.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		textFieldNbBonbon.setColumns(10);
-		textFieldNbBonbon.setBounds(279, 397, 53, 28);
+		textFieldNbBonbon.setBounds(155, 344, 53, 28);
 		textFieldNbBonbon.setEditable(false);
 		add(textFieldNbBonbon);
 		
@@ -195,7 +195,7 @@ public class InventairePanel extends JPanel
 		scrollPaneInventaire.setColumnHeaderView(table_1);
 		
 		JButton btnNewButton = new JButton("Cr\u00E9er un film");
-		btnNewButton.setBounds(485, 288, 149, 38);
+		btnNewButton.setBounds(485, 262, 149, 38);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Film.creer_film();
@@ -206,7 +206,7 @@ public class InventairePanel extends JPanel
 		
 		
 		JButton btnNewButton_1 = new JButton("Modifier un film");
-		btnNewButton_1.setBounds(23, 260, 149, 38);
+		btnNewButton_1.setBounds(485, 313, 149, 38);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Film.modifier_film();
@@ -217,7 +217,7 @@ public class InventairePanel extends JPanel
 		
 		
 		btnNewButton_2 = new JButton("Supprimer un film");
-		btnNewButton_2.setBounds(485, 337, 149, 38);
+		btnNewButton_2.setBounds(485, 364, 149, 38);
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Film.supprimer_film();	
