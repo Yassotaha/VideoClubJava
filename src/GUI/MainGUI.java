@@ -82,7 +82,7 @@ public class MainGUI {
 		//Frame
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.GRAY);
-		frame.setBounds(100, 100, 1206, 640);
+		frame.setBounds(100, 100, 1206, 750);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		gridBagLayout = new GridBagLayout();

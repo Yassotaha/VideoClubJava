@@ -29,30 +29,39 @@ import Main.Film;
 
 public class InventairePanel extends JPanel 
 {
+	
+	//Variable static du JPanel Inventaire
+	public static Connection connection ;
+	private static JTable tableInventaire;
+	private static JTextField id;
+	private static JTextField Titre;
+	private static JTextField Annee;
+	private static JTextField nouveaute;
+	private static JTextField bluray;
+	private static JTextField prixdelocation;
+	private static JTextField prixdachat;
+	private static JTextField Stock;
+	private static JTextField Categorie;
+	
 	//Variable du JPanel Inventaire
 	private JTextField textFieldNbPopcorn;
-	private static JTable tableInventaire;
 	private JScrollPane scrollPaneInventaire;
 	private JTextField textFieldNbBonbon;
 	private JLabel lblFilms;
 	private JLabel lblPopcorn;
 	private JLabel lblBonbon;
-	
-	public static Connection connection ;
 	private JButton btnNewButton_2;
-	private static JTextField Titre;
-	private static JTextField Année;
-	private static JTextField Categorie;
-	private static JTextField prixdachat;
-	private static JTextField prixdelocation;
-
+	
+	private JTextField txtId;
 	private JTextField txtTitre;
 	private JTextField txtAnne;
-	private JTextField txtCatgorie;
 	private JTextField txtPrixDachat;
 	private JTextField txtPrixDeLocation;
-	private static JTextField Stock;
+	private JTextField txtNouveaute;
+	private JTextField txtBluray;
 	private JTextField txtStock;
+	private JTextField txtCatgorie;
+	
 	private JTextField PrixdArticle;
 	private JTextField txtPrixDarticle;
 	private JTextField txtQuantit;
@@ -75,6 +84,55 @@ public class InventairePanel extends JPanel
 		connection = sqliteConnection.dbConnector();
 		setBounds(new Rectangle(0, 0, 940, 438));
 		setLayout(null);
+		
+		
+		
+		setId(new JTextField("00000"));
+		getId().setColumns(10);
+		getId().setBounds(778, 260, 104, 20);
+		add(getId());
+		
+		setTitre(new JTextField("PommeDePin"));
+		getTitre().setColumns(10);
+		getTitre().setBounds(778, 290, 104, 20);
+		add(getTitre());
+
+		setAnnee(new JTextField("2020"));
+		getAnnee().setColumns(10);
+		getAnnee().setBounds(778, 320, 104, 20);
+		add(getAnnee());
+		
+		setPrixdelocation(new JTextField("2"));
+		getPrixdelocation().setColumns(10);
+		getPrixdelocation().setBounds(778, 350, 104, 20);
+		add(getPrixdelocation());
+		
+		setPrixdachat(new JTextField("5"));
+		getPrixdachat().setColumns(10);
+		getPrixdachat().setBounds(778, 380, 104, 20);
+		add(getPrixdachat());
+		
+		setNouveaute(new JTextField("True"));
+		getNouveaute().setColumns(10);
+		getNouveaute().setBounds(778, 410, 104, 20);
+		add(getNouveaute());
+		
+		setBluray(new JTextField("False"));
+		getBluray().setColumns(10);
+		getBluray().setBounds(778, 440, 104, 20);
+		add(getBluray());
+		
+		setStock(new JTextField("43"));
+		getStock().setColumns(10);
+		getStock().setBounds(778, 470, 104, 20);
+		add(getStock());
+		
+		setCategorie(new JTextField("Drame"));
+		getCategorie().setColumns(10);
+		getCategorie().setBounds(778, 500, 104, 20);
+		add(getCategorie());
+		
+	
 		
 		
 		lblPopcorn = new JLabel("Popcorn:");
@@ -122,7 +180,7 @@ public class InventairePanel extends JPanel
 		
 		
 		setTableInventaire(new JTable());
-		getTableInventaire().setFont(new Font("Tahoma", Font.PLAIN, 18));
+		getTableInventaire().setFont(new Font("Tahoma", Font.PLAIN, 13));
 	
 		
 		try {
@@ -140,7 +198,7 @@ public class InventairePanel extends JPanel
 		getTableInventaire().getColumnModel().getColumn(3).setPreferredWidth(89);
 		getTableInventaire().getColumnModel().getColumn(4).setPreferredWidth(48);
 		getTableInventaire().getColumnModel().getColumn(5).setPreferredWidth(116);
-		getTableInventaire().getTableHeader().setFont(new Font("Tahoma", Font.PLAIN, 20));
+		getTableInventaire().getTableHeader().setFont(new Font("Tahoma", Font.PLAIN, 13));
 		scrollPaneInventaire.setViewportView(getTableInventaire());
 		
 		setTable(new JTable());
@@ -155,7 +213,6 @@ public class InventairePanel extends JPanel
 			public void actionPerformed(ActionEvent e) {
 				Film.creer_film();
 				Film.loadTableFilms();
-				
 			}
 		});
 		add(btnNewButton);
@@ -167,7 +224,7 @@ public class InventairePanel extends JPanel
 			public void actionPerformed(ActionEvent e) {
 				
 				lblFilmModifier.setVisible(true);
-				getStock1() .setVisible(true);
+//				getStock1() .setVisible(true);
 				textField.setVisible(true);
 				btnNewButton_4.setVisible(true);
 				revalidate();
@@ -191,77 +248,69 @@ public class InventairePanel extends JPanel
 		});
 		add(btnNewButton_2);
 		
-		setTitre(new JTextField());
-		getTitre().setBounds(778, 260, 104, 20);
-		add(getTitre());
-		getTitre().setColumns(10);
 		
-		setAnnée(new JTextField());
-		getAnnée().setColumns(10);
-		getAnnée().setBounds(778, 288, 104, 20);
-		add(getAnnée());
-		
-		setCategorie(new JTextField());
-		getCategorie().setColumns(10);
-		getCategorie().setBounds(778, 318, 104, 20);
-		add(getCategorie());
-		
-		setPrixdachat(new JTextField());
-		getPrixdachat().setColumns(10);
-		getPrixdachat().setBounds(778, 342, 59, 20);
-		add(getPrixdachat());
-		
-		setPrixdelocation(new JTextField());
-		getPrixdelocation().setColumns(10);
-		getPrixdelocation().setBounds(778, 367, 59, 20);
-		add(getPrixdelocation());
+		txtId = new JTextField();
+		txtId.setEditable(false);
+		txtId.setText("    ID");
+		txtId.setColumns(10);
+		txtId.setBounds(650, 260, 104, 20);
+		add(txtId);
 		
 		txtTitre = new JTextField();
 		txtTitre.setEditable(false);
 		txtTitre.setText("    Titre");
 		txtTitre.setColumns(10);
-		txtTitre.setBounds(664, 260, 104, 20);
+		txtTitre.setBounds(650, 290, 104, 20);
 		add(txtTitre);
 		
 		txtAnne = new JTextField();
 		txtAnne.setEditable(false);
 		txtAnne.setText("    Ann\u00E9e");
 		txtAnne.setColumns(10);
-		txtAnne.setBounds(664, 288, 104, 20);
+		txtAnne.setBounds(650, 320, 104, 20);
 		add(txtAnne);
-		
-		txtCatgorie = new JTextField();
-		txtCatgorie.setEditable(false);
-		txtCatgorie.setText("    Cat\u00E9gorie");
-		txtCatgorie.setColumns(10);
-		txtCatgorie.setBounds(664, 318, 104, 20);
-		add(txtCatgorie);
-		
-		txtPrixDachat = new JTextField();
-		txtPrixDachat.setEditable(false);
-		txtPrixDachat.setText("   Prix d'achat");
-		txtPrixDachat.setColumns(10);
-		txtPrixDachat.setBounds(664, 342, 104, 20);
-		add(txtPrixDachat);
 		
 		txtPrixDeLocation = new JTextField();
 		txtPrixDeLocation.setEditable(false);
 		txtPrixDeLocation.setText("   Prix de location");
 		txtPrixDeLocation.setColumns(10);
-		txtPrixDeLocation.setBounds(664, 367, 104, 20);
+		txtPrixDeLocation.setBounds(650, 350, 104, 20);
 		add(txtPrixDeLocation);
 		
-		setStock(new JTextField());
-		getStock().setColumns(10);
-		getStock().setBounds(600, 260, 53, 20);
-		add(getStock());
+		txtPrixDachat = new JTextField();
+		txtPrixDachat.setEditable(false);
+		txtPrixDachat.setText("   Prix d'achat");
+		txtPrixDachat.setColumns(10);
+		txtPrixDachat.setBounds(650, 380, 104, 20);
+		add(txtPrixDachat);
+		
+		txtNouveaute = new JTextField();
+		txtNouveaute.setEditable(false);
+		txtNouveaute.setText("      Nouveaute");
+		txtNouveaute.setColumns(10);
+		txtNouveaute.setBounds(650, 410, 104, 20);
+		add(txtNouveaute);
+		
+		txtBluray = new JTextField();
+		txtBluray.setEditable(false);
+		txtBluray.setText("      Bluray");
+		txtBluray.setColumns(10);
+		txtBluray.setBounds(650, 440, 104, 20);
+		add(txtBluray);
 		
 		txtStock = new JTextField();
 		txtStock.setEditable(false);
 		txtStock.setText("      Stock");
 		txtStock.setColumns(10);
-		txtStock.setBounds(485, 260, 104, 20);
+		txtStock.setBounds(650, 470, 104, 20);
 		add(txtStock);
+		
+		txtCatgorie = new JTextField();
+		txtCatgorie.setEditable(false);
+		txtCatgorie.setText("    Cat\u00E9gorie");
+		txtCatgorie.setColumns(10);
+		txtCatgorie.setBounds(650, 500, 104, 20);
+		add(txtCatgorie);
 		
 		JButton btnNewButton_3 = new JButton("    Modifier un article");
 		btnNewButton_3.setBounds(23, 309, 149, 38);
@@ -330,14 +379,14 @@ public class InventairePanel extends JPanel
 		textField.setVisible(false);
 		add(textField);
 		
-		setStock1(new JTextField());
-		getStock1().setColumns(10);
-		getStock1().setBounds(296, 278, 53, 20);
-		getStock1().setVisible(false);
-		add(getStock1());
+//		setStock1(new JTextField());
+//		getStock1().setColumns(10);
+//		getStock1().setBounds(296, 278, 53, 20);
+//		getStock1().setVisible(false);
+//		add(getStock1());
 		
 		btnNewButton_4 = new JButton("Modifie film");
-		btnNewButton_4.setBounds(192, 303, 89, 23);
+		btnNewButton_4.setBounds(192, 303, 89, 35);
 		btnNewButton_4.setVisible(false);
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -403,15 +452,15 @@ public class InventairePanel extends JPanel
 	}
 
 	public void setTitre(JTextField titre) {
-		Titre = titre;
+		this.Titre = titre;
 	}
 
-	public static JTextField getAnnée() {
-		return Année;
+	public static JTextField getAnnee() {
+		return Annee;
 	}
 
-	public void setAnnée(JTextField année) {
-		Année = année;
+	public void setAnnee(JTextField Annee) {
+		this.Annee = Annee;
 	}
 
 	public static JTextField getPrixdelocation() {
@@ -446,11 +495,37 @@ public class InventairePanel extends JPanel
 		this.Categorie = categorie;
 	}
 
-	public static JTextField getStock1() {
-		return Stock1;
+//	public static JTextField getStock1() {
+//		return Stock1;
+//	}
+//
+//	public void setStock1(JTextField stock1) {
+//		this.Stock1 = stock1;
+//	}
+	
+	
+	
+	public static JTextField getId() {
+		return id;
 	}
 
-	public void setStock1(JTextField stock1) {
-		this.Stock1 = stock1;
+	public void setId(JTextField id) {
+		this.id = id;
+	}
+	
+	public static JTextField getNouveaute() {
+		return nouveaute;
+	}
+
+	public void setNouveaute(JTextField nouveaute) {
+		this.nouveaute = nouveaute;
+	}
+	
+	public static JTextField getBluray() {
+		return bluray;
+	}
+
+	public void setBluray(JTextField bluray) {
+		this.bluray = bluray;
 	}
 }
