@@ -68,37 +68,9 @@ public class MembrePanel extends JPanel {
 		button.setBounds(34, 316, 205, 33);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//La methode enregistrer_employer permet d'enregistrer un nouveau employer dans la base de donnees.
-				String NomValue = getNom().getText();
-				String TelValue = getTelephone().getText();
+				Membre.Creer_membre();
+				Membre.loadTablemembres();
 				
-				String CreditValue= getCartedecredit().getText();
-				//Long  CreditValue1 = Long.parseLong(CreditValue);
-				
-				String CodeValue= getCodeSecret().getText();
-				Integer CodeValue1 = Integer.parseInt(CodeValue);
-				
-				
-				
-             try {
-		        	
-				//String query = "INSERT INTO MembreInfo (`Nom`,Telephone,Credit,CodeSecret) Values("+NomValue+","+TelValue+","+CreditValue2+","+CodeValue2+")";*/
-               	String query = "INSERT INTO MembreInfo (`Nom`,Telephone,Credit,CodeSecret) Values(?,?,?,?)";
-					PreparedStatement pst = connection.prepareStatement(query);
-					pst.setString(1, NomValue);
-					pst.setString(2, TelValue);
-					pst.setString(3, CreditValue);
-					pst.setInt(4, CodeValue1);
-
-					boolean rs = pst.execute();
-				String query1 = "select ID,Nom,Telephone from MembreInfo";
-					PreparedStatement pst1 = connection.prepareStatement(query1);
-					ResultSet rs1 = pst1.executeQuery();
-					getTable().setModel(DbUtils.resultSetToTableModel(rs1));
-					
-				} catch (SQLException e1) {
-					
-					e1.printStackTrace();				}
 				
 			}
 		});
@@ -251,28 +223,8 @@ public class MembrePanel extends JPanel {
 		btn_suppMembre.setBounds(34, 399, 205, 33);
 		btn_suppMembre.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				//La methode supprimer_employer permet de supprimer un employer de la base de donnees.
-				
-				int row = getTable().getSelectedRow();
-		        Integer id = (Integer) getTable().getModel().getValueAt(row, 0);	
-		        
-		        
-		        try {
-		        	
-					String query = "delete from MembreInfo where ID= "+ id  ;
-					PreparedStatement pst = connection.prepareStatement(query);
-					boolean rs = pst.execute();
-					String query1 = "select ID,Nom,Telephone from MembreInfo";
-					PreparedStatement pst1 = connection.prepareStatement(query1);
-					ResultSet rs1 = pst1.executeQuery();
-					getTable().setModel(DbUtils.resultSetToTableModel(rs1));
-					
-				} catch (SQLException e1) {
-					
-					e1.printStackTrace();
-				}
-				
+				Membre.supprimer_membre();
+				Membre.loadTablemembres();
 			}
 		});
 		add(btn_suppMembre);

@@ -30,7 +30,68 @@ public class Membre {
 			this.noCarte = noCarte;
 			this.codeSecret = codeSecret;
 		}
+		//La methode supprimer_Membre permet de supprimer un employer de la base de donnees.
+		public static void supprimer_membre() {
 		
+		
+		int row = MembrePanel.getTable().getSelectedRow();
+        Integer id = (Integer) MembrePanel.getTable().getModel().getValueAt(row, 0);	
+        
+        
+        try {
+        	
+			String query = "delete from MembreInfo where ID= "+ id  ;
+			PreparedStatement pst = conn.prepareStatement(query);
+			boolean rs = pst.execute();
+			String query1 = "select ID,Nom,Telephone from MembreInfo";
+			PreparedStatement pst1 = conn.prepareStatement(query1);
+			ResultSet rs1 = pst1.executeQuery();
+			MembrePanel.getTable().setModel(DbUtils.resultSetToTableModel(rs1));
+			
+		} catch (SQLException e1) {
+			
+			e1.printStackTrace();
+		}
+		
+	}
+		
+		public static void Creer_membre() {
+		//La methode enregistrer_employer permet d'enregistrer un nouveau employer dans la base de donnees.
+		String NomValue = MembrePanel.getNom().getText();
+		String TelValue = MembrePanel.getTelephone().getText();
+		
+		String CreditValue= MembrePanel.getCartedecredit().getText();
+		//Long  CreditValue1 = Long.parseLong(CreditValue);
+		
+		String CodeValue= MembrePanel.getCodeSecret().getText();
+		Integer CodeValue1 = Integer.parseInt(CodeValue);
+		
+		
+		
+     try {
+        	
+		//String query = "INSERT INTO MembreInfo (`Nom`,Telephone,Credit,CodeSecret) Values("+NomValue+","+TelValue+","+CreditValue2+","+CodeValue2+")";*/
+       	String query = "INSERT INTO MembreInfo (`Nom`,Telephone,Credit,CodeSecret) Values(?,?,?,?)";
+			PreparedStatement pst = conn.prepareStatement(query);
+			pst.setString(1, NomValue);
+			pst.setString(2, TelValue);
+			pst.setString(3, CreditValue);
+			pst.setInt(4, CodeValue1);
+
+			boolean rs = pst.execute();
+		String query1 = "select ID,Nom,Telephone from MembreInfo";
+			PreparedStatement pst1 = conn.prepareStatement(query1);
+			ResultSet rs1 = pst1.executeQuery();
+			MembrePanel.getTable().setModel(DbUtils.resultSetToTableModel(rs1));
+			
+		} catch (SQLException e1) {
+			
+			e1.printStackTrace();			
+			}
+}
+
+		
+	
 		
 		//Methode pour la modification des des membres dans la base de donnees
 		public static void modifier_membre() {
@@ -144,6 +205,6 @@ public class Membre {
 //			
 //		}
 		
-		
+
 		
 }
