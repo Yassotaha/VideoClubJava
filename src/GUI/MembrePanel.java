@@ -31,12 +31,13 @@ public class MembrePanel extends JPanel {
 	private static JTextField CodeSecret;
 	private static JTextField Cartedecredit;
 	private static JTextField Telephone;
+	private static JTextField Nom;
+	private static JTable table;
+	
 	private JTextField textField_5;
 	private JTextField txtTlphone;
 	private JTextField textField_7;
 	private JTextField textField_8;
-	private static JTextField Nom;
-	private static JTable table;
 	private JTextField textField_inputNomAModif;
 	private JTextField textField_nomAModif;
 	private JTextField textField_CodeSecretAModif;

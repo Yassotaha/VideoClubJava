@@ -30,28 +30,45 @@ public class Membre {
 			this.noCarte = noCarte;
 			this.codeSecret = codeSecret;
 		}
+		
+		
 		//Methode pour la modification des des membres dans la base de donnees
 		public static void modifier_membre() {
 			
-			String nom= MembrePanel.getNom().getText();
+			String nom1 = MembrePanel.getNom().getText();
 			String Telephone = MembrePanel.getTelephone().getText();
 			//Integer Telephone1 = Integer.parseInt(Telephone);
 			String CodeSecret= MembrePanel.getCodeSecret().getText();
 			Integer CodeSecret1 = Integer.parseInt(CodeSecret);
 			String Cartedecredit = MembrePanel.getCartedecredit().getText();
-			 int row = MembrePanel.getTable().getSelectedRow();
-		        Object id =  MembrePanel.getModel().getValueAt(row, 0);	
+			
+			int row = MembrePanel.getTable().getSelectedRow();
+			System.out.println("Row: "+MembrePanel.getTable().getSelectedRow());
+//		    Object id =  MembrePanel.getModel().getValueAt(row, 0);	
+			
+			System.out.println("ID: "+MembrePanel.getModel().getValueAt(row, 0));
+			
+		    int id = (int) MembrePanel.getModel().getValueAt(row, 0);	
+			
+//			String nom1 = "bob";
+//			String Telephone = "12314";
+//			int CodeSecret1 = 123;
+//			String Cartedecredit = "7654";
+//			int id = 3;
+			
 			
 	     try {
 	    
 			
-	       	String query = "UPDATE MembreInfo SET Nom = ?, Telephone = ?, CodeSecret = ?, credit = ? WHERE ID = ?" + id;
-				PreparedStatement pst = conn.prepareStatement(query);
-				pst.setString(1, nom);
+//	       	String query = "UPDATE MembreInfo SET Nom = ?, Telephone = ?, CodeSecret = ?, credit = ? WHERE ID = ?" + id;
+	    	String query = "UPDATE MembreInfo SET Nom = ?, Telephone = ?, CodeSecret = ?, credit = ? WHERE ID = ?";
+				
+	    	 	PreparedStatement pst = conn.prepareStatement(query);
+				pst.setString(1, nom1);
 				pst.setString(2, Telephone);
 				pst.setInt(3, CodeSecret1);
 				pst.setString(4, Cartedecredit);
-			//	pst.setInt(5, id);
+				pst.setInt(5, id);
 				
 
 				boolean rs = pst.execute();
@@ -59,13 +76,15 @@ public class Membre {
 				
 			} catch (SQLException e1) {
 				
-				e1.printStackTrace();				}
+				e1.printStackTrace();				
+			}
 			
 		}
+		
 		// permet d'affichier la table des membres
 		public static void loadTablemembres() {
 			try {
-				String query = "select * from MembreInfo";
+				String query = "select ID,Nom,Telephone from MembreInfo";
 				PreparedStatement pst = conn.prepareStatement(query);
 				ResultSet rs = pst.executeQuery();
 				MembrePanel.getTable().setModel(DbUtils.resultSetToTableModel(rs));
