@@ -171,24 +171,28 @@ public class MembrePanel extends JPanel {
 		add(getTelephone());
 		
 		textField_5 = new JTextField();
+		textField_5.setEditable(false);
 		textField_5.setText("    Nom:");
 		textField_5.setColumns(10);
 		textField_5.setBounds(639, 322, 40, 20);
 		add(textField_5);
 		
 		txtTlphone = new JTextField();
+		txtTlphone.setEditable(false);
 		txtTlphone.setText("    T\u00E9l\u00E9phone:");
 		txtTlphone.setColumns(10);
 		txtTlphone.setBounds(607, 350, 72, 20);
 		add(txtTlphone);
 		
 		textField_7 = new JTextField();
+		textField_7.setEditable(false);
 		textField_7.setText("    Code secret:");
 		textField_7.setColumns(10);
 		textField_7.setBounds(599, 412, 80, 20);
 		add(textField_7);
 		
 		textField_8 = new JTextField();
+		textField_8.setEditable(false);
 		textField_8.setText("    Carte de Cr\u00E9dit/D\u00E9bit:");
 		textField_8.setColumns(10);
 		textField_8.setBounds(545, 381, 134, 20);
@@ -280,6 +284,7 @@ public class MembrePanel extends JPanel {
 		add(textField_inputNomAModif);
 		
 		textField_nomAModif = new JTextField();
+		textField_nomAModif.setEditable(false);
 		textField_nomAModif.setText("    Nom:");
 		textField_nomAModif.setColumns(10);
 		textField_nomAModif.setBounds(301, 353, 40, 20);
@@ -287,6 +292,7 @@ public class MembrePanel extends JPanel {
 		add(textField_nomAModif);
 		
 		textField_CodeSecretAModif = new JTextField();
+		textField_CodeSecretAModif.setEditable(false);
 		textField_CodeSecretAModif.setText("Code secret:");
 		textField_CodeSecretAModif.setColumns(10);
 		textField_CodeSecretAModif.setVisible(false);

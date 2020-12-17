@@ -217,30 +217,35 @@ public class InventairePanel extends JPanel
 		add(getPrixdelocation());
 		
 		txtTitre = new JTextField();
+		txtTitre.setEditable(false);
 		txtTitre.setText("    Titre");
 		txtTitre.setColumns(10);
 		txtTitre.setBounds(664, 260, 104, 20);
 		add(txtTitre);
 		
 		txtAnne = new JTextField();
+		txtAnne.setEditable(false);
 		txtAnne.setText("    Ann\u00E9e");
 		txtAnne.setColumns(10);
 		txtAnne.setBounds(664, 288, 104, 20);
 		add(txtAnne);
 		
 		txtCatgorie = new JTextField();
+		txtCatgorie.setEditable(false);
 		txtCatgorie.setText("    Cat\u00E9gorie");
 		txtCatgorie.setColumns(10);
 		txtCatgorie.setBounds(664, 318, 104, 20);
 		add(txtCatgorie);
 		
 		txtPrixDachat = new JTextField();
+		txtPrixDachat.setEditable(false);
 		txtPrixDachat.setText("   Prix d'achat");
 		txtPrixDachat.setColumns(10);
 		txtPrixDachat.setBounds(664, 342, 104, 20);
 		add(txtPrixDachat);
 		
 		txtPrixDeLocation = new JTextField();
+		txtPrixDeLocation.setEditable(false);
 		txtPrixDeLocation.setText("   Prix de location");
 		txtPrixDeLocation.setColumns(10);
 		txtPrixDeLocation.setBounds(664, 367, 104, 20);
@@ -252,6 +257,7 @@ public class InventairePanel extends JPanel
 		add(getStock());
 		
 		txtStock = new JTextField();
+		txtStock.setEditable(false);
 		txtStock.setText("      Stock");
 		txtStock.setColumns(10);
 		txtStock.setBounds(485, 260, 104, 20);
@@ -288,6 +294,7 @@ public class InventairePanel extends JPanel
 		
 		
 		txtPrixDarticle = new JTextField();
+		txtPrixDarticle.setEditable(false);
 		txtPrixDarticle.setText(" Prix d'article");
 		txtPrixDarticle.setBounds(10, 378, 86, 20);
 		txtPrixDarticle.setColumns(10);
@@ -296,6 +303,7 @@ public class InventairePanel extends JPanel
 		
 		
 		txtQuantit = new JTextField();
+		txtQuantit.setEditable(false);
 		txtQuantit.setText("  Quantit\u00E9");
 		txtQuantit.setBounds(10, 404, 86, 20);
 		txtQuantit.setColumns(10);
@@ -315,6 +323,7 @@ public class InventairePanel extends JPanel
 		add(lblFilmModifier);
 		
 		textField = new JTextField();
+		textField.setEditable(false);
 		textField.setText("      Stock");
 		textField.setColumns(10);
 		textField.setBounds(182, 278, 104, 20);
@@ -356,9 +365,10 @@ public class InventairePanel extends JPanel
 		getId_field().setColumns(10);
 		
 		txtIdFilm = new JTextField();
+		txtIdFilm.setEditable(false);
 		txtIdFilm.setText("ID film");
 		txtIdFilm.setColumns(10);
-		txtIdFilm.setBounds(382, 318, 59, 20);
+		txtIdFilm.setBounds(388, 318, 59, 20);
 		add(txtIdFilm);
 		
 		
