@@ -76,7 +76,7 @@ public class Membre {
 		}
 		
 				
-	
+	//dfghdghdfgh
 	//Getters (Accesseurs)
 		public String getNom(){
 			return this.nom;

@@ -92,6 +92,7 @@ public class Film {
 	}
 		
 		// permet d'affichier la table de films
+	//prmetrre de 
 				public static void loadTableFilms() {
 					try {
 						String query = "select * from FilmInfo";

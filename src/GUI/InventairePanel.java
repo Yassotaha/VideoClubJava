@@ -69,6 +69,7 @@ public class InventairePanel extends JPanel
 	private JTextField txtIdFilm;
 	
 	//Créer le JPanel Inventaire
+	//dfhrghdfghd
 	public InventairePanel() 
 	{
 		connection = sqliteConnection.dbConnector();

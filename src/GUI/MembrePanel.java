@@ -192,7 +192,7 @@ public class MembrePanel extends JPanel {
 		textField_8.setColumns(10);
 		textField_8.setBounds(545, 381, 134, 20);
 		add(textField_8);
-		
+		//dghdghdfgh
 		setNom(new JTextField());
 		getNom().setColumns(10);
 		getNom().setBounds(684, 322, 180, 20);
