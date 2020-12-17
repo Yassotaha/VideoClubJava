@@ -36,6 +36,12 @@ public class MainGUI {
 	private JPanel panel_2;
 	private GridBagConstraints gbc_panel_2;
 	
+	public static String amende1;
+	public static String amende2;
+	public static String amende3;
+	public static String amende4;
+	public static String amende5;
+	
 	//Temporaire pour l'instant; ID sauvegarder ici
 	public static String ID = null;
 
@@ -173,11 +179,11 @@ public class MainGUI {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				//try {
-					//Main.Location.calculeRetard();
-				//} catch (ParseException e1) {
-				//	e1.printStackTrace();
-				//}
+				try {
+					Main.Location.calculeRetard();
+				} catch (ParseException e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnNewButton_1.setBounds(244, 34, 109, 34);
