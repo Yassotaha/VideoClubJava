@@ -34,13 +34,15 @@ public class VentePanel extends JPanel {
 	public static Connection connection = null;
 	private JLabel lblPopcornamount;
 	private JLabel lblBonbonsamount;
+	private JLabel Total;
+	private JTable table;
+	private JTextField EntrerCodeProduit;
+	private JRadioButton rdbtnAcheter;
+	private JRadioButton rdbtnLouer;
+	private boolean isAchat;
 	private int TotalPopcorn = 0;
 	private int TotalBonbons = 0;
 	private int i = 1;
-	private JTable table;
-	private JTextField EntrerCodeProduit;
-	private JLabel Total;
-	private boolean isAchat;
 
 	/**
 	 * Create the panel.
@@ -118,13 +120,13 @@ public class VentePanel extends JPanel {
 		
 		
 		
-		JRadioButton rdbtnLouer = new JRadioButton("Louer");
+		rdbtnLouer = new JRadioButton("Louer");
 		rdbtnLouer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
 				
+				rdbtnAcheter.setSelected(false);
 				
-					boolean isAchat = false;
+				boolean isAchat = false;
 					
 					
 					
@@ -134,15 +136,15 @@ public class VentePanel extends JPanel {
 		add(rdbtnLouer);
 		
 		
-		JRadioButton rdbtnAcheter = new JRadioButton("Acheter");
+		rdbtnAcheter = new JRadioButton("Acheter");
 		
 		
 		rdbtnAcheter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
-			
-		
-			boolean isAchat = true;
+				
+				rdbtnLouer.setSelected(false);
+				
+				boolean isAchat = true;
 			
 			
 			
