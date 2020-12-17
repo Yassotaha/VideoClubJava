@@ -62,20 +62,7 @@ public class InventairePanel extends JPanel
 	private JTextField txtStock;
 	private JTextField txtCatgorie;
 	
-	private JTextField PrixdArticle;
-	private JTextField txtPrixDarticle;
-	private JTextField txtQuantit;
-	private JTextField Quantite;
-	private JLabel lblArticleModifier;
-	private JLabel lblFilmModifier;
-	private JTextField textField;
-	private static JTextField Stock1;
-	private JButton btnNewButton_4;
-	private JButton btnModifieArticle;
-	
 	private static JTable table_1;
-	private static JTextField id_field;
-	private JTextField txtIdFilm;
 	
 	//Créer le JPanel Inventaire
 	//dfhrghdfghd
@@ -137,12 +124,12 @@ public class InventairePanel extends JPanel
 		
 		lblPopcorn = new JLabel("Popcorn:");
 		lblPopcorn.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblPopcorn.setBounds(226, 397, 84, 28);
+		lblPopcorn.setBounds(23, 397, 84, 28);
 		add(lblPopcorn);
 		
 		lblBonbon = new JLabel("Bonbon:");
 		lblBonbon.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblBonbon.setBounds(514, 397, 75, 28);
+		lblBonbon.setBounds(192, 397, 75, 28);
 		add(lblBonbon);
 		
 		lblFilms = new JLabel("Films:");
@@ -156,7 +143,7 @@ public class InventairePanel extends JPanel
 		textFieldNbPopcorn.setText("45");
 		textFieldNbPopcorn.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		textFieldNbPopcorn.setColumns(10);
-		textFieldNbPopcorn.setBounds(308, 397, 53, 28);
+		textFieldNbPopcorn.setBounds(107, 397, 53, 28);
 		textFieldNbPopcorn.setEditable(false);
 		add(textFieldNbPopcorn);
 		
@@ -167,7 +154,7 @@ public class InventairePanel extends JPanel
 		textFieldNbBonbon.setText("85");
 		textFieldNbBonbon.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		textFieldNbBonbon.setColumns(10);
-		textFieldNbBonbon.setBounds(600, 397, 53, 28);
+		textFieldNbBonbon.setBounds(279, 397, 53, 28);
 		textFieldNbBonbon.setEditable(false);
 		add(textFieldNbBonbon);
 		
@@ -222,12 +209,8 @@ public class InventairePanel extends JPanel
 		btnNewButton_1.setBounds(23, 260, 149, 38);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				lblFilmModifier.setVisible(true);
-//				getStock1() .setVisible(true);
-				textField.setVisible(true);
-				btnNewButton_4.setVisible(true);
-				revalidate();
+				Film.modifier_film();
+				Film.loadTableFilms();
 			}
 		});
 		add(btnNewButton_1);
@@ -237,13 +220,8 @@ public class InventairePanel extends JPanel
 		btnNewButton_2.setBounds(485, 337, 149, 38);
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				sqliteConnection.supprimer_film();	
+				Film.supprimer_film();	
 				Film.loadTableFilms();
-				
-			
-			
-			
 			}
 		});
 		add(btnNewButton_2);
@@ -312,115 +290,7 @@ public class InventairePanel extends JPanel
 		txtCatgorie.setBounds(650, 500, 104, 20);
 		add(txtCatgorie);
 		
-		JButton btnNewButton_3 = new JButton("    Modifier un article");
-		btnNewButton_3.setBounds(23, 309, 149, 38);
-		
-		
-		btnNewButton_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			
-				lblArticleModifier.setVisible(true);
-				Quantite.setVisible(true);
-				txtQuantit.setVisible(true);
-				txtPrixDarticle.setVisible(true);
-				PrixdArticle.setVisible(true);
-				btnModifieArticle .setVisible(true);
-				revalidate();
-			}
-		});
-		add(btnNewButton_3);
-		  lblArticleModifier = new JLabel("Article \u00E0 modifier:");
-		lblArticleModifier.setBounds(31, 355, 141, 20);
-		lblArticleModifier.setVisible(false);
-		add(lblArticleModifier);
-		
-		
-		PrixdArticle = new JTextField();
-		PrixdArticle.setBounds(106, 378, 86, 20);
-		PrixdArticle.setColumns(10);
-		PrixdArticle.setVisible(false);
-		add(PrixdArticle);
-		
-		
-		txtPrixDarticle = new JTextField();
-		txtPrixDarticle.setEditable(false);
-		txtPrixDarticle.setText(" Prix d'article");
-		txtPrixDarticle.setBounds(10, 378, 86, 20);
-		txtPrixDarticle.setColumns(10);
-		txtPrixDarticle.setVisible(false);
-		add(txtPrixDarticle);
-		
-		
-		txtQuantit = new JTextField();
-		txtQuantit.setEditable(false);
-		txtQuantit.setText("  Quantit\u00E9");
-		txtQuantit.setBounds(10, 404, 86, 20);
-		txtQuantit.setColumns(10);
-		txtQuantit.setVisible(false);
-		add(txtQuantit);
 
-		
-		Quantite = new JTextField();
-		Quantite.setBounds(106, 404, 75, 20);
-		Quantite.setColumns(10);
-		Quantite.setVisible(false);
-		add(Quantite);
-		
-		lblFilmModifier = new JLabel("Film \u00E0 modifier:");
-		lblFilmModifier.setBounds(182, 260, 111, 14);
-		lblFilmModifier.setVisible(false);
-		add(lblFilmModifier);
-		
-		textField = new JTextField();
-		textField.setEditable(false);
-		textField.setText("      Stock");
-		textField.setColumns(10);
-		textField.setBounds(182, 278, 104, 20);
-		textField.setVisible(false);
-		add(textField);
-		
-//		setStock1(new JTextField());
-//		getStock1().setColumns(10);
-//		getStock1().setBounds(296, 278, 53, 20);
-//		getStock1().setVisible(false);
-//		add(getStock1());
-		
-		btnNewButton_4 = new JButton("Modifie film");
-		btnNewButton_4.setBounds(192, 303, 89, 35);
-		btnNewButton_4.setVisible(false);
-		btnNewButton_4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Film.modifier_film();
-				Film.loadTableFilms();
-			
-			}
-		});
-		add(btnNewButton_4);
-		
-		btnModifieArticle = new JButton("Modifie article");
-		btnModifieArticle.setBounds(202, 366, 108, 23);
-		btnModifieArticle.setVisible(false);
-		btnModifieArticle.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				
-			}
-		});
-		add(btnModifieArticle);
-		
-		setId_field(new JTextField());
-		getId_field().setBounds(382, 342, 98, 20);
-		add(getId_field());
-		getId_field().setColumns(10);
-		
-		txtIdFilm = new JTextField();
-		txtIdFilm.setEditable(false);
-		txtIdFilm.setText("ID film");
-		txtIdFilm.setColumns(10);
-		txtIdFilm.setBounds(388, 318, 59, 20);
-		add(txtIdFilm);
-		
-		
 
 	}
 
@@ -439,13 +309,7 @@ public class InventairePanel extends JPanel
 		this.table_1 = table;
 	}
 
-	public static JTextField getId_field() {
-		return id_field;
-	}
-
-	public void setId_field(JTextField id_field) {
-		this.id_field = id_field;
-	}
+	
 
 	public static JTextField getTitre() {
 		return Titre;
@@ -495,14 +359,6 @@ public class InventairePanel extends JPanel
 		this.Categorie = categorie;
 	}
 
-//	public static JTextField getStock1() {
-//		return Stock1;
-//	}
-//
-//	public void setStock1(JTextField stock1) {
-//		this.Stock1 = stock1;
-//	}
-	
 	
 	
 	public static JTextField getId() {

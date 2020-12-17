@@ -49,21 +49,24 @@ static Connection conn =dbConnector();
 			ex.printStackTrace();
 		}
 	}*/
-	//La methode supprimer_film permet de supprimer un film de la base de donnees "UsersData.db".
-		public static void supprimer_film() {
-			
 	
-	        
-			try {
-				String query = "delete from FilmInfo where ID= "+ InventairePanel.getId_field().getText()  ;
-				PreparedStatement pst = conn.prepareStatement(query);
-				pst.execute();
-				pst.executeUpdate();
-				pst.close();
-			}catch (SQLException e1) {
-				e1.printStackTrace();
-			}
-		}
+	
+	//La methode supprimer_film permet de supprimer un film de la base de donnees "UsersData.db".
+//		public static void supprimer_film() {
+//			
+//	
+//	        
+//			try {
+//				String query = "delete from FilmInfo where ID= "+ InventairePanel.getId_field().getText()  ;
+//				PreparedStatement pst = conn.prepareStatement(query);
+//				pst.execute();
+//				pst.executeUpdate();
+//				pst.close();
+//			}catch (SQLException e1) {
+//				e1.printStackTrace();
+//			}
+//		}
+	
 	//La methode chercher_article permet de chercher un produit dans la base de donnees a partir de son ID.
 	public static void chercher_article() {
 		try {

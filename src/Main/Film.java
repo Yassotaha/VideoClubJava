@@ -66,6 +66,33 @@ public class Film {
 		
 	}
 	
+	//La methode supprimer_Membre permet de supprimer un employer de la base de donnees.
+			public static void supprimer_film() {
+			
+			
+			int row = InventairePanel.getTableInventaire().getSelectedRow();
+	        Integer id = (Integer) InventairePanel.getTableInventaire().getModel().getValueAt(row, 0);	
+	        
+	        
+	        try {
+	        	
+				String query = "delete from FilmInfo where ID= "+ id  ;
+				PreparedStatement pst = conn.prepareStatement(query);
+				boolean rs = pst.execute();
+				String query1 = "select * FilmInfo";
+				PreparedStatement pst1 = conn.prepareStatement(query1);
+				ResultSet rs1 = pst1.executeQuery();
+				InventairePanel.getTableInventaire().setModel(DbUtils.resultSetToTableModel(rs1));
+				
+			} catch (SQLException e1) {
+				
+				e1.printStackTrace();
+			}
+			
+		}
+	
+	
+	
 	//Methode pour la modification des films dans la base de donnees
 	public static void modifier_film() {
 		
