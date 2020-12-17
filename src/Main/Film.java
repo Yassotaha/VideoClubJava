@@ -76,7 +76,7 @@ public class Film {
 			
 			
 			int row = InventairePanel.getTableInventaire().getSelectedRow();
-	        Integer id = (Integer) InventairePanel.getTableInventaire().getModel().getValueAt(row, 0);	
+	        int id = (Integer) InventairePanel.getTableInventaire().getModel().getValueAt(row, 0);	
 	        
 	        
 	        try {
@@ -84,7 +84,7 @@ public class Film {
 				String query = "delete from FilmInfo where ID= "+ id  ;
 				PreparedStatement pst = conn.prepareStatement(query);
 				boolean rs = pst.execute();
-				String query1 = "select * FilmInfo";
+				String query1 = "select * from FilmInfo";
 				PreparedStatement pst1 = conn.prepareStatement(query1);
 				ResultSet rs1 = pst1.executeQuery();
 				InventairePanel.getTableInventaire().setModel(DbUtils.resultSetToTableModel(rs1));
