@@ -2,6 +2,7 @@ package GUI;
 
 import Main.sqliteConnection;
 
+
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Color;
@@ -47,14 +48,14 @@ public class LoginFrame {
 		connection = sqliteConnection.dbConnector();
 		
 		frame = new JFrame();
-		frame.setBounds(100, 100, 860, 500);
+		frame.setBounds(100, 100, 823, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		firstpanel = new JPanel();
 		firstpanel.setBackground(Color.GRAY);
 		firstpanel.setBounds(new Rectangle(0, 0, 940, 438));
 		firstpanel.setLayout(null);
-		frame.add(firstpanel);
+		frame.getContentPane().add(firstpanel);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.LIGHT_GRAY);
@@ -63,9 +64,10 @@ public class LoginFrame {
 		panel.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JLabel lblNewLabel = new JLabel("Authentification");
-		lblNewLabel.setBackground(SystemColor.inactiveCaptionBorder);
+		lblNewLabel.setBackground(Color.RED);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblNewLabel);
+		lblNewLabel.setBackground(Color.red);
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 37));
 		
 		IDField = new JTextField();
@@ -179,6 +181,11 @@ public class LoginFrame {
 		MDPField = new JPasswordField();
 		MDPField.setBounds(370, 262, 214, 26);
 		firstpanel.add(MDPField);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setBounds(0, 0, 807, 461);
+		lblNewLabel_1.setIcon(new ImageIcon(LoginFrame.class.getResource("/background.jpg")));
+		firstpanel.add(lblNewLabel_1);
 
 	}
 	

@@ -1,11 +1,14 @@
 package GUI;
 
 import java.sql.*;
+
 import java.text.ParseException;
 
 import javax.swing.*;
 
 import Main.BackEnd;
+
+import GUI.*;
 
 import java.awt.EventQueue;
 import java.awt.CardLayout;
@@ -310,18 +313,13 @@ public class MainGUI {
 		gbc_btnInventaire.gridx = 0;
 		gbc_btnInventaire.gridy = 6;
 		panelOperation.add(btnInventaire, gbc_btnInventaire);
-		
-		
-		//Icon
-		ImageIcon icon = new ImageIcon("GUI/.logo.png");
-		  
-		 
-		//LabelLogo
-		JLabel lblNewLabel_2 = new JLabel("Logo");
-		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
-		gbc_lblNewLabel_2.gridx = 0;
-		gbc_lblNewLabel_2.gridy = 7;
-		panelOperation.add(lblNewLabel_2, gbc_lblNewLabel_2);
+		//GridBagConstraints gbc_label = new GridBagConstraints();
+		//gbc_label.gridx = 0;
+		//gbc_label.gridy = 7;
+		//logo.setIcon(new ImageIcon(MainGUI.class.getResource("/logo.png")));
+	
+	
+
 
 		
 	
@@ -335,13 +333,7 @@ public class MainGUI {
 		gbc_horizontalStrut_1.gridy = 2;
 		frame.getContentPane().add(horizontalStrut_1, gbc_horizontalStrut_1);
 		
-		//VerticalStrut (structural)
-		Component verticalStrut = Box.createVerticalStrut(20);
-		GridBagConstraints gbc_verticalStrut = new GridBagConstraints();
-		gbc_verticalStrut.insets = new Insets(0, 0, 0, 5);
-		gbc_verticalStrut.gridx = 3;
-		gbc_verticalStrut.gridy = 3;
-		frame.getContentPane().add(verticalStrut, gbc_verticalStrut);
+		
 		
 	}
 	
@@ -357,8 +349,6 @@ public class MainGUI {
 	{
 		frame.setVisible(false);
 	}
-	
-		
 		}
 	
 	
