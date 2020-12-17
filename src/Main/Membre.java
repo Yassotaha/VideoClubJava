@@ -1,5 +1,16 @@
 package Main;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+import GUI.*;
+
+
+
 public class Membre {
 	
 	//Attributs
@@ -7,7 +18,7 @@ public class Membre {
 		private String noTelephone;
 		private int noCarte;
 		private int codeSecret;
-		
+		static Connection conn =sqliteConnection.dbConnector();
 		
 	//Constructeur
 		public Membre(String nom, String noTelephone, int noCarte, int codeSecret) {
@@ -17,6 +28,7 @@ public class Membre {
 			this.codeSecret = codeSecret;
 		}
 		
+				
 	
 	//Getters (Accesseurs)
 		public String getNom(){

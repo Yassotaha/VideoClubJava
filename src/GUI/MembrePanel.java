@@ -78,26 +78,25 @@ public class MembrePanel extends JPanel {
 				
 				
 				
-//                try {
-//		        	
-//					/*String query = "INSERT INTO MembreInfo (`Nom`,Telephone,Credit,CodeSecret) Values("+NomValue+","+TelValue+","+CreditValue2+","+CodeValue2+")";*/
-//                	String query = "INSERT INTO MembreInfo (`Nom`,Telephone,Credit,CodeSecret) Values(?,?,?,?)";
-//					PreparedStatement pst = connection.prepareStatement(query);
-//					pst.setString(1, NomValue);
-//					pst.setString(2, TelValue);
-//					pst.setString(3, CreditValue);
-//					pst.setInt(4, CodeValue1);
-//
-//					boolean rs = pst.execute();
-//					String query1 = "select ID,Nom,Telephone from MembreInfo";
-//					PreparedStatement pst1 = connection.prepareStatement(query1);
-//					ResultSet rs1 = pst1.executeQuery();
-//					table.setModel(DbUtils.resultSetToTableModel(rs1));
-//					
-//				} catch (SQLException e1) {
-//					
-//					e1.printStackTrace();
-//				}
+             try {
+		        	
+				//String query = "INSERT INTO MembreInfo (`Nom`,Telephone,Credit,CodeSecret) Values("+NomValue+","+TelValue+","+CreditValue2+","+CodeValue2+")";*/
+               	String query = "INSERT INTO MembreInfo (`Nom`,Telephone,Credit,CodeSecret) Values(?,?,?,?)";
+					PreparedStatement pst = connection.prepareStatement(query);
+					pst.setString(1, NomValue);
+					pst.setString(2, TelValue);
+					pst.setString(3, CreditValue);
+					pst.setInt(4, CodeValue1);
+
+					boolean rs = pst.execute();
+				String query1 = "select ID,Nom,Telephone from MembreInfo";
+					PreparedStatement pst1 = connection.prepareStatement(query1);
+					ResultSet rs1 = pst1.executeQuery();
+					table.setModel(DbUtils.resultSetToTableModel(rs1));
+					
+				} catch (SQLException e1) {
+					
+					e1.printStackTrace();				}
 				
 			}
 		});
@@ -309,4 +308,8 @@ public class MembrePanel extends JPanel {
 		add(lblRentrerModification);
 
 	}
+
+
+
+	
 }
