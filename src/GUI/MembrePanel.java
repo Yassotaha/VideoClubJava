@@ -1,8 +1,6 @@
 package GUI;
 
 import javax.swing.JPanel;
-
-
 import javax.swing.JTable;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
@@ -21,49 +19,51 @@ import Main.sqliteConnection;
 
 public class MembrePanel extends JPanel {
 	
-	
+//Constantes du MembrePanel
 	public static Connection connection = null;
 	private static JTextField CodeSecret;
 	private static JTextField Cartedecredit;
 	private static JTextField Telephone;
 	private static JTextField Nom;
 	private static JTable table;
-	
-	
+
+//Variables MembrePanel
 	private JTextField textField_5;
 	private JTextField txtTlphone;
 	private JTextField textField_7;
 	private JTextField textField_8;
+	private JScrollPane scrollPane;
+	private JButton buttonCreerMembre;
+	private JButton btn_modifMembre;
+	private JButton btn_suppMembre;
 	
 
 	
-
-	
-	//Constructeur du MembrePanel.
+//Constructeur du MembrePanel.
 	public MembrePanel() {
+		
 		connection = sqliteConnection.dbConnector();
 		setTable(new JTable());
 		setBounds(new Rectangle(0, 0, 940, 438));
 		setLayout(null);
 		
-		JButton button = new JButton("Cr\u00E9er un nouveau membre");
-		button.setBounds(34, 316, 205, 33);
-		button.addActionListener(new ActionListener() {
+		buttonCreerMembre = new JButton("Créer un nouveau membre");
+		buttonCreerMembre.setBounds(34, 316, 205, 33);
+		buttonCreerMembre.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Membre.Creer_membre();
 				Membre.loadTablemembres();
 			}
 		});
-		add(button);
+		add(buttonCreerMembre);
 		
-
+	//===========================
+	//Constantes JtextField
 		setCodeSecret(new JTextField());
 		getCodeSecret().setColumns(10);
 		getCodeSecret().setBounds(684, 412, 180, 20);
 		add(getCodeSecret());
 
-		
-		
 		setNom(new JTextField());
 		getNom().setColumns(10);
 		getNom().setBounds(684, 322, 180, 20);
@@ -78,6 +78,7 @@ public class MembrePanel extends JPanel {
 		getTelephone().setColumns(10);
 		getTelephone().setBounds(684, 350, 180, 20);
 		add(getTelephone());
+	//===========================
 		
 		textField_5 = new JTextField();
 		textField_5.setEditable(false);
@@ -107,15 +108,9 @@ public class MembrePanel extends JPanel {
 		textField_8.setBounds(545, 381, 134, 20);
 		add(textField_8);
 	
-		
-		
-		
-		
-		JScrollPane scrollPane = new JScrollPane();
+		scrollPane = new JScrollPane();
 		scrollPane.setBounds(24, 11, 859, 298);
 		add(scrollPane);
-		
-		
 		
 		
 		try {
@@ -135,7 +130,7 @@ public class MembrePanel extends JPanel {
 		
 		
 		
-		JButton btn_modifMembre = new JButton("Modifier un membre");
+		btn_modifMembre = new JButton("Modifier un membre");
 		btn_modifMembre.setBounds(34, 356, 205, 33);
 		btn_modifMembre.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -146,9 +141,7 @@ public class MembrePanel extends JPanel {
 		add(btn_modifMembre);
 		
 		
-		
-		
-		JButton btn_suppMembre = new JButton("Supprimer un membre");
+		btn_suppMembre = new JButton("Supprimer un membre");
 		btn_suppMembre.setBounds(34, 399, 205, 33);
 		btn_suppMembre.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -157,10 +150,12 @@ public class MembrePanel extends JPanel {
 			}
 		});
 		add(btn_suppMembre);
-
 	}
 
+	
 
+	
+//Getters et setters des constantes JTextFields du Panel
 
 	public static JTextField getNom() {
 		return Nom;
@@ -215,7 +210,6 @@ public class MembrePanel extends JPanel {
 	}
 
 
-
 	public void setTable(JTable table) {
 		this.table = table;
 	}
@@ -225,8 +219,6 @@ public class MembrePanel extends JPanel {
 	public static JTable getModel() {
 		return table;
 	}
-
-
 
 	
 }

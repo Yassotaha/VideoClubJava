@@ -193,13 +193,6 @@ public class Film {
 			e1.printStackTrace();
 		}
 	}
-
-	
-		
-	
-		
-	
-	
 	
 	
 }
