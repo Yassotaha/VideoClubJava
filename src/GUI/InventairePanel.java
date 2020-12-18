@@ -74,47 +74,47 @@ public class InventairePanel extends JPanel
 		
 		
 		
-		setId(new JTextField("00000"));
+		setId(new JTextField());
 		getId().setColumns(10);
 		getId().setBounds(778, 260, 104, 20);
 		add(getId());
 		
-		setTitre(new JTextField("PommeDePin"));
+		setTitre(new JTextField());
 		getTitre().setColumns(10);
 		getTitre().setBounds(778, 290, 104, 20);
 		add(getTitre());
 
-		setAnnee(new JTextField("2020"));
+		setAnnee(new JTextField());
 		getAnnee().setColumns(10);
 		getAnnee().setBounds(778, 320, 104, 20);
 		add(getAnnee());
 		
-		setPrixdelocation(new JTextField("2"));
+		setPrixdelocation(new JTextField());
 		getPrixdelocation().setColumns(10);
 		getPrixdelocation().setBounds(778, 350, 104, 20);
 		add(getPrixdelocation());
 		
-		setPrixdachat(new JTextField("5"));
+		setPrixdachat(new JTextField());
 		getPrixdachat().setColumns(10);
 		getPrixdachat().setBounds(778, 380, 104, 20);
 		add(getPrixdachat());
 		
-		setNouveaute(new JTextField("True"));
+		setNouveaute(new JTextField());
 		getNouveaute().setColumns(10);
 		getNouveaute().setBounds(778, 410, 104, 20);
 		add(getNouveaute());
 		
-		setBluray(new JTextField("False"));
+		setBluray(new JTextField());
 		getBluray().setColumns(10);
 		getBluray().setBounds(778, 440, 104, 20);
 		add(getBluray());
 		
-		setStock(new JTextField("43"));
+		setStock(new JTextField());
 		getStock().setColumns(10);
 		getStock().setBounds(778, 470, 104, 20);
 		add(getStock());
 		
-		setCategorie(new JTextField("Drame"));
+		setCategorie(new JTextField());
 		getCategorie().setColumns(10);
 		getCategorie().setBounds(778, 500, 104, 20);
 		add(getCategorie());
