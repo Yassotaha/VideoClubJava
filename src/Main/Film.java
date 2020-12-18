@@ -86,9 +86,8 @@ public class Film {
 	public static void creer_film() {
 		String Titre = InventairePanel.getTitre().getText();
 		String Annee = InventairePanel.getAnnee().getText();
-		String Prixdelocation= InventairePanel.getPrixdelocation().getText();
-		String Prixdachat= InventairePanel.getPrixdachat().getText();
-		int Prixdachat1 = Integer.parseInt(Prixdachat);
+		Double Prixdelocation= Double.parseDouble(InventairePanel.getPrixdelocation().getText());
+		Double Prixachat= Double.parseDouble(InventairePanel.getPrixdachat().getText());
 		String Nouveaute = (InventairePanel.getNouveaute().getText());
 		String Bluray = (InventairePanel.getBluray().getText());
 		String Stock= InventairePanel.getStock().getText();
@@ -101,8 +100,8 @@ public class Film {
 			PreparedStatement pst = conn.prepareStatement(query);
 			pst.setString(1, Titre);
 			pst.setString(2, Annee);
-			pst.setString(3, Prixdelocation);
-			pst.setInt(4, Prixdachat1);
+			pst.setDouble(3, Prixdelocation);
+			pst.setDouble(4, Prixachat);
 			pst.setString(5, Nouveaute);
 			pst.setString(6, Bluray);
 			pst.setString(7, Stock);
