@@ -23,7 +23,7 @@ public class Membre {
 		private int codeSecret;
 		static Connection conn =sqliteConnection.dbConnector();
 		
-	//Constructeur
+	//Constructeur pour membre
 		public Membre(String nom, String noTelephone, int noCarte, int codeSecret) {
 			this.nom = nom;
 			this.noTelephone = noTelephone;

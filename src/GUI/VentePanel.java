@@ -2,14 +2,12 @@
 
 package GUI;
 
-import java.awt.Color;
-import java.awt.Font;
+
 import java.awt.Rectangle;
 import Main.sqliteConnection;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
@@ -21,29 +19,22 @@ import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
-import Main.sqliteConnection;
-import net.proteanit.sql.DbUtils;
 
-import javax.swing.JScrollBar;
-import javax.swing.JCheckBox;
+
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 public class VentePanel extends JPanel {
 	
 	public static Connection connection = null;
-	private JLabel lblPopcornamount;
-	private JLabel lblBonbonsamount;
 	private JLabel Total;
 	private JTable table;
 	private JTextField EntrerCodeProduit;
 	private JRadioButton rdbtnAcheter;
 	private JRadioButton rdbtnLouer;
 	private JButton btnAjouter;
-	private boolean isAchat;
-	private int TotalPopcorn = 0;
+		private int TotalPopcorn = 0;
 	private int TotalBonbons = 0;
 	private int i = 1;
 
@@ -182,7 +173,7 @@ public class VentePanel extends JPanel {
 				
 				rdbtnAcheter.setSelected(false);
 				
-				boolean isAchat = false;		
+					
 			}
 		});
 		rdbtnLouer.setBounds(52, 371, 109, 23);
@@ -197,7 +188,7 @@ public class VentePanel extends JPanel {
 				
 				rdbtnLouer.setSelected(false);
 				
-				boolean isAchat = true;
+				
 			}			
 		});
 		rdbtnAcheter.setBounds(52, 333, 109, 23);
