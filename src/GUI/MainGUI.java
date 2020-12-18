@@ -187,7 +187,7 @@ public class MainGUI {
 				
 				try {
 					Main.Location.calculeRetard();
-					JOptionPane.showMessageDialog(null, amende1+"\n"+"\n"+amende2+"\n"+"\n"+amende3+"\n"+"\n"+amende4+"\n"+"\n"+amende5);
+					JOptionPane.showMessageDialog(null, amende1+"\n"+"\n"+amende2+"\n"+"\n"+amende3+"\n"+"\n"+amende5);
 				} catch (ParseException e1) {
 					e1.printStackTrace();
 				}
