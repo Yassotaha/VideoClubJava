@@ -48,7 +48,7 @@ public class LoginFrame {
 		connection = sqliteConnection.dbConnector();
 		
 		frame = new JFrame();
-		frame.setBounds(100, 100, 823, 500);
+		frame.setBounds(100, 100, 815, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		firstpanel = new JPanel();
@@ -58,12 +58,13 @@ public class LoginFrame {
 		frame.getContentPane().add(firstpanel);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(Color.LIGHT_GRAY);
-		panel.setBounds(263, 62, 321, 99);
+		panel.setBackground(new Color(238, 238, 238));
+		panel.setBounds(288, 62, 296, 337);
 		firstpanel.add(panel);
-		panel.setLayout(new GridLayout(0, 1, 0, 0));
+		panel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Authentification");
+		lblNewLabel.setBounds(20, 36, 250, 84);
 		lblNewLabel.setBackground(Color.RED);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblNewLabel);
@@ -71,26 +72,29 @@ public class LoginFrame {
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 37));
 		
 		IDField = new JTextField();
-		IDField.setBounds(370, 209, 214, 26);
-		firstpanel.add(IDField);
+		IDField.setBounds(126, 184, 142, 20);
 		IDField.setColumns(10);
+		panel.add(IDField);
 		
-		JLabel IDLabel = new JLabel("Identifiant:");
-		IDLabel.setFont(new Font("Arial", Font.PLAIN, 16));
-		IDLabel.setBounds(263, 209, 83, 22);
-		firstpanel.add(IDLabel);
+		JLabel label = new JLabel("Identifiant:");
+		label.setBounds(49, 165, 144, 54);
+		label.setFont(new Font("Arial", Font.PLAIN, 16));
+		panel.add(label);
 		
-		JLabel MDPLabel = new JLabel("Mot de passe:");
-		MDPLabel.setFont(new Font("Arial", Font.PLAIN, 16));
-		MDPLabel.setBounds(263, 259, 105, 22);
-		firstpanel.add(MDPLabel);
+		JLabel label_1 = new JLabel("Mot de passe:");
+		label_1.setBounds(20, 196, 127, 84);
+		label_1.setFont(new Font("Arial", Font.PLAIN, 16));
+		panel.add(label_1);
 		
-		JButton btnConnect = new JButton("Se connecter");
-		btnConnect.addActionListener(new ActionListener() {
+		MDPField = new JPasswordField();
+		MDPField.setBounds(126, 230, 144, 20);
+		panel.add(MDPField);
+		
+		JButton btnSeConnecter = new JButton("Se connecter");
+		btnSeConnecter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				
-				try {
+try {
 					
 					Main.BackEnd.setEstSup(false);
 					
@@ -170,17 +174,11 @@ public class LoginFrame {
 					}
 				}
 				
-
-			
-				
 			}
 		});
-		btnConnect.setBounds(370, 305, 126, 23);
-		firstpanel.add(btnConnect);
+		btnSeConnecter.setBounds(94, 273, 119, 34);
 		
-		MDPField = new JPasswordField();
-		MDPField.setBounds(370, 262, 214, 26);
-		firstpanel.add(MDPField);
+		panel.add(btnSeConnecter);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setBounds(0, 0, 807, 461);
@@ -201,9 +199,4 @@ public class LoginFrame {
 	{
 		frame.setVisible(false);
 	}
-	
-	
-	
-	
-	
 }
