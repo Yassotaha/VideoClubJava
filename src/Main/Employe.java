@@ -1,7 +1,12 @@
 package Main;
 
 public class Employe {
-
+	
+	
+	//Variable static pour enregistrer le login de l'employée
+		public static boolean estSup = false;
+	
+		
 	//Attributs
 		protected String id;
 		protected String password;
@@ -42,4 +47,14 @@ public class Employe {
 		}
 
 
+	//Méthode pour get et set la variable static pour enregistrer le login de l'employée
+		public static boolean getEstSup() {
+			return estSup;
+		}
+		
+		public static void setEstSup(boolean estSup) {
+			Employe.estSup = estSup;
+		}
+		
+		
 }

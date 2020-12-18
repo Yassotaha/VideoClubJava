@@ -96,7 +96,7 @@ public class LoginFrame {
 				
 try {
 					
-					Main.BackEnd.setEstSup(false);
+					Main.Employe.setEstSup(false);
 					
 					String query = "select * from UsersInfo where ID=? and PW=? ";
 					PreparedStatement pst = connection.prepareStatement(query);
@@ -131,11 +131,11 @@ try {
 						
 						if(count2==1) {
 							System.out.println(IDField.getText()+" est un superviseur");
-							Main.BackEnd.setEstSup(true);
+							Main.Employe.setEstSup(true);
 						}
 						else {
 							System.out.println(IDField.getText()+" n'est pas un superviseur");
-							Main.BackEnd.setEstSup(false);
+							Main.Employe.setEstSup(false);
 						}
 						
 						

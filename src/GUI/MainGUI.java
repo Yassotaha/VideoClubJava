@@ -6,7 +6,6 @@ import java.text.ParseException;
 
 import javax.swing.*;
 
-import Main.BackEnd;
 
 import GUI.*;
 
@@ -292,7 +291,7 @@ public class MainGUI {
 				
 				
 				
-				if (BackEnd.estSup == true) {
+				if (Main.Employe.estSup == true) {
 					
 					inventairePanel.setVisible(true);
 					ventePanel.setVisible(false);
