@@ -153,7 +153,7 @@ public class LoginFrame {
 					
 				}
 				catch(Exception e1){
-					JOptionPane.showMessageDialog(null, e1);
+					JOptionPane.showMessageDialog(null, "Identifiant et mot de passe incorrect. Veuillez essayer de nouveau.");
 				}
 				
 				finally {
