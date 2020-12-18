@@ -54,14 +54,14 @@ public class Membre {
 		}
 		
 	}
-		
+	 //La methode enregistrer_employer permet d'enregistrer un nouveau membre dans la base de donnees
 		public static void Creer_membre() {
-		//La methode enregistrer_employer permet d'enregistrer un nouveau employer dans la base de donnees.
+		
 		String NomValue = MembrePanel.getNom().getText();
 		String TelValue = MembrePanel.getTelephone().getText();
 		
 		String CreditValue= MembrePanel.getCartedecredit().getText();
-		//Long  CreditValue1 = Long.parseLong(CreditValue);
+		
 		
 		String CodeValue= MembrePanel.getCodeSecret().getText();
 		Integer CodeValue1 = Integer.parseInt(CodeValue);
@@ -70,7 +70,7 @@ public class Membre {
 		
      try {
         	
-		//String query = "INSERT INTO MembreInfo (`Nom`,Telephone,Credit,CodeSecret) Values("+NomValue+","+TelValue+","+CreditValue2+","+CodeValue2+")";*/
+		
        	String query = "INSERT INTO MembreInfo (`Nom`,Telephone,Credit,CodeSecret) Values(?,?,?,?)";
 			PreparedStatement pst = conn.prepareStatement(query);
 			pst.setString(1, NomValue);
@@ -105,23 +105,18 @@ public class Membre {
 			
 			int row = MembrePanel.getTable().getSelectedRow();
 			System.out.println("Row: "+MembrePanel.getTable().getSelectedRow());
-//		    Object id =  MembrePanel.getModel().getValueAt(row, 0);	
+
 			
 			System.out.println("ID: "+MembrePanel.getModel().getValueAt(row, 0));
 			
 		    int id = (int) MembrePanel.getModel().getValueAt(row, 0);	
 			
-//			String nom1 = "bob";
-//			String Telephone = "12314";
-//			int CodeSecret1 = 123;
-//			String Cartedecredit = "7654";
-//			int id = 3;
-			
+
 			
 	     try {
 	    
 			
-//	       	String query = "UPDATE MembreInfo SET Nom = ?, Telephone = ?, CodeSecret = ?, credit = ? WHERE ID = ?" + id;
+
 	    	String query = "UPDATE MembreInfo SET Nom = ?, Telephone = ?, CodeSecret = ?, credit = ? WHERE ID = ?";
 				
 	    	 	PreparedStatement pst = conn.prepareStatement(query);
@@ -156,7 +151,7 @@ public class Membre {
 		}
 		
 				
-	//dfghdghdfgh
+	
 	//Getters (Accesseurs)
 		public String getNom(){
 			return this.nom;
@@ -194,16 +189,7 @@ public class Membre {
 	
 		
 		
-//		public static void createMembre(String nom, String noTelephone, int noCarte, int codeSecret)
-//		{
-//			Membre membre = new Membre(nom, noTelephone, noCarte, codeSecret);
-//		}
-//		
-//		
-//		public static void ajouterMembreADatabase()
-//		{
-//			
-//		}
+		
 		
 
 		
