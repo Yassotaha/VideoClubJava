@@ -1,8 +1,5 @@
 package GUI;
 
-import javax.swing.JFrame;
-
-
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import java.awt.Rectangle;
@@ -18,7 +15,6 @@ import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-
 import java.awt.Font;
 import javax.swing.JLabel;
 import java.awt.Color;

@@ -4,19 +4,12 @@ import Main.sqliteConnection;
 
 
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.Color;
-import java.awt.SystemColor;
 import java.awt.Rectangle;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
-import java.awt.EventQueue;
 import java.sql.*; 
 import javax.swing.*;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class LoginFrame {
 	
@@ -94,7 +87,7 @@ public class LoginFrame {
 		btnSeConnecter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-try {
+				try {
 					
 					Main.Employe.setEstSup(false);
 					
@@ -114,8 +107,6 @@ try {
 					
 					if(count==1) {
 						JOptionPane.showMessageDialog(null, "Identifiant et mot de passe correct.");
-						//TODO Changer pour le Panel "membre"
-						
 						
 						String query2 = "select * from UsersInfo where ID=? and SUP=?";
 						PreparedStatement pst2 = connection.prepareStatement(query2);
