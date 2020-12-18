@@ -4,6 +4,7 @@ package GUI;
 
 
 import java.awt.Rectangle;
+
 import Main.sqliteConnection;
 import javax.swing.JPanel;
 import javax.swing.JButton;
@@ -77,7 +78,7 @@ public class VentePanel extends JPanel {
 				
 			//Ajoute Article Popcorn au "Panier"
 				Object[] row = new Object[8];
-				row [0] = "ID";
+				row [0] = "-";
 				row [1] = "Popcorn";
 				row [2] = "-";
 				row [3] = "3.00";
@@ -94,7 +95,7 @@ public class VentePanel extends JPanel {
 			       
 			        double MontantAchat = Double.parseDouble(table.getValueAt(i, 3)+"");
 			        total = MontantAchat+total;
-			        System.out.println("Total: "+total);
+			       
 			    }
 
 			   float TotalFloat = (float)total;
@@ -121,7 +122,7 @@ public class VentePanel extends JPanel {
 				
 			//Ajoute Article Bonbon au "Panier"
 				Object[] row = new Object[8];
-				row [0] = "ID";
+				row [0] = "-";
 				row [1] = "Bonbon";
 				row [2] = "-";
 				row [3] = "1.50";
@@ -138,7 +139,7 @@ public class VentePanel extends JPanel {
 			       
 			        double MontantAchat = Double.parseDouble(table.getValueAt(i, 3)+"");
 			        total = MontantAchat+total;
-			        System.out.println("Total: "+total);
+			        
 			    }
 
 			   float TotalFloat = (float)total;
@@ -266,7 +267,7 @@ public class VentePanel extends JPanel {
 					       
 					        double MontantAchat = Double.parseDouble(table.getValueAt(i, 3)+"");
 					        total = MontantAchat+total;
-					        System.out.println("Total: "+total);
+					 
 					    }
 					    
 					   //PopCorn 3$   Bonbon 1,5$

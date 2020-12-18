@@ -315,17 +315,6 @@ public class MainGUI {
 		gbc_btnInventaire.gridx = 0;
 		gbc_btnInventaire.gridy = 6;
 		panelOperation.add(btnInventaire, gbc_btnInventaire);
-		//GridBagConstraints gbc_label = new GridBagConstraints();
-		//gbc_label.gridx = 0;
-		//gbc_label.gridy = 7;
-		//logo.setIcon(new ImageIcon(MainGUI.class.getResource("/logo.png")));
-	
-	
-
-
-		
-	
-		
 		
 		//HorizontalStrut2 (structural)
 		Component horizontalStrut_1 = Box.createHorizontalStrut(20);

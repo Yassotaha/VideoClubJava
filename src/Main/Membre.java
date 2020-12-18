@@ -1,14 +1,10 @@
 package Main;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-
 import GUI.*;
 import net.proteanit.sql.DbUtils;
 
@@ -42,7 +38,7 @@ public class Membre {
         	
 			String query = "delete from MembreInfo where ID= "+ id  ;
 			PreparedStatement pst = conn.prepareStatement(query);
-			boolean rs = pst.execute();
+			pst.execute();
 			String query1 = "select ID,Nom,Telephone from MembreInfo";
 			PreparedStatement pst1 = conn.prepareStatement(query1);
 			ResultSet rs1 = pst1.executeQuery();
@@ -78,7 +74,7 @@ public class Membre {
 			pst.setString(3, CreditValue);
 			pst.setInt(4, CodeValue1);
 
-			boolean rs = pst.execute();
+			pst.execute();
 		String query1 = "select ID,Nom,Telephone from MembreInfo";
 			PreparedStatement pst1 = conn.prepareStatement(query1);
 			ResultSet rs1 = pst1.executeQuery();
@@ -104,10 +100,6 @@ public class Membre {
 			String Cartedecredit = MembrePanel.getCartedecredit().getText();
 			
 			int row = MembrePanel.getTable().getSelectedRow();
-			System.out.println("Row: "+MembrePanel.getTable().getSelectedRow());
-
-			
-			System.out.println("ID: "+MembrePanel.getModel().getValueAt(row, 0));
 			
 		    int id = (int) MembrePanel.getModel().getValueAt(row, 0);	
 			
@@ -127,7 +119,7 @@ public class Membre {
 				pst.setInt(5, id);
 				
 
-				boolean rs = pst.execute();
+				 pst.execute();
 			
 				
 			} catch (SQLException e1) {

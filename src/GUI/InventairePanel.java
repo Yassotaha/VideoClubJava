@@ -65,7 +65,7 @@ public class InventairePanel extends JPanel
 	private static JTable table_1;
 	
 	//Créer le JPanel Inventaire
-	//dfhrghdfghd
+
 	public InventairePanel() 
 	{
 		connection = sqliteConnection.dbConnector();
