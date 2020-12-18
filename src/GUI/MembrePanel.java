@@ -4,60 +4,42 @@ import javax.swing.JPanel;
 
 
 import javax.swing.JTable;
-import javax.swing.JScrollBar;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import net.proteanit.sql.DbUtils;
-
 import javax.swing.JButton;
 import javax.swing.JTextField;
-import javax.swing.JTextArea;
-import javax.swing.SwingConstants;
 import javax.swing.JScrollPane;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import Main.*;
-import java.awt.Font;
+import Main.Membre;
 import Main.sqliteConnection;
 
+
 public class MembrePanel extends JPanel {
+	
+	
+	public static Connection connection = null;
 	private static JTextField CodeSecret;
 	private static JTextField Cartedecredit;
 	private static JTextField Telephone;
 	private static JTextField Nom;
 	private static JTable table;
 	
+	
 	private JTextField textField_5;
 	private JTextField txtTlphone;
 	private JTextField textField_7;
 	private JTextField textField_8;
-	private JTextField textField_inputNomAModif;
-	private JTextField textField_nomAModif;
-	private JTextField textField_CodeSecretAModif;
-	private JTextField textField_inputCodeSecretAModif;
-	private JLabel lblCompteModifier;
-	private JLabel lblRentrerModification;
 	
 
-	public static Connection connection = null;
-
-	private JButton btnAjouterMembre; 
-	private JButton btnAppliquerModifMembre;
-	private JButton btnSupprimerMembre;
-	private JButton btnAnnulerOperation;
 	
 
-
-	/**
-	 * Create the panel.
-	 */
+	
+	//Constructeur du MembrePanel.
 	public MembrePanel() {
 		connection = sqliteConnection.dbConnector();
 		setTable(new JTable());
@@ -70,8 +52,6 @@ public class MembrePanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				Membre.Creer_membre();
 				Membre.loadTablemembres();
-				
-				
 			}
 		});
 		add(button);
@@ -84,53 +64,10 @@ public class MembrePanel extends JPanel {
 
 		
 		
-		
-		
-		btnAjouterMembre = new JButton("Ajouter");
-		button.setBounds(910, 400, 10, 10);
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		add(button);
-		
-		
-		btnAppliquerModifMembre = new JButton("Appliquer");
-		button.setBounds(34, 316, 205, 33);
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		add(button);
-		
-		
-		
-		btnSupprimerMembre = new JButton("Supprimer");
-		button.setBounds(34, 316, 205, 33);
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		add(button);
-		
-		
-		btnAnnulerOperation = new JButton("Annuler");
-		button.setBounds(34, 316, 205, 33);
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		add(button);
-		
-		
-		
-		
-		
-
+		setNom(new JTextField());
+		getNom().setColumns(10);
+		getNom().setBounds(684, 322, 180, 20);
+		add(getNom());
 		
 		setCartedecredit(new JTextField());
 		getCartedecredit().setColumns(10);
@@ -169,11 +106,10 @@ public class MembrePanel extends JPanel {
 		textField_8.setColumns(10);
 		textField_8.setBounds(545, 381, 134, 20);
 		add(textField_8);
-		//dghdghdfgh
-		setNom(new JTextField());
-		getNom().setColumns(10);
-		getNom().setBounds(684, 322, 180, 20);
-		add(getNom());
+	
+		
+		
+		
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(24, 11, 859, 298);
@@ -205,13 +141,6 @@ public class MembrePanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				Membre.modifier_membre();
 				Membre.loadTablemembres();
-				//lblCompteModifier.setVisible(true);
-				//lblRentrerModification.setVisible(true);
-				//textField_inputNomAModif.setVisible(true);
-				//textField_nomAModif.setVisible(true);
-				//textField_CodeSecretAModif.setVisible(true);
-				//textField_inputCodeSecretAModif.setVisible(true);
-				//revalidate();
 			}
 		});
 		add(btn_modifMembre);
@@ -228,46 +157,6 @@ public class MembrePanel extends JPanel {
 			}
 		});
 		add(btn_suppMembre);
-		
-		textField_inputNomAModif = new JTextField();
-		textField_inputNomAModif.setColumns(10);
-		textField_inputNomAModif.setBounds(353, 353, 180, 20);
-		textField_inputNomAModif.setVisible(false);
-		add(textField_inputNomAModif);
-		
-		textField_nomAModif = new JTextField();
-		textField_nomAModif.setEditable(false);
-		textField_nomAModif.setText("    Nom:");
-		textField_nomAModif.setColumns(10);
-		textField_nomAModif.setBounds(301, 353, 40, 20);
-		textField_nomAModif.setVisible(false);
-		add(textField_nomAModif);
-		
-		textField_CodeSecretAModif = new JTextField();
-		textField_CodeSecretAModif.setEditable(false);
-		textField_CodeSecretAModif.setText("Code secret:");
-		textField_CodeSecretAModif.setColumns(10);
-		textField_CodeSecretAModif.setVisible(false);
-		textField_CodeSecretAModif.setBounds(261, 381, 80, 20);
-		
-		add(textField_CodeSecretAModif);
-		
-		textField_inputCodeSecretAModif = new JTextField();
-		textField_inputCodeSecretAModif.setColumns(10);
-		textField_inputCodeSecretAModif.setBounds(353, 381, 180, 20);
-		textField_inputCodeSecretAModif.setVisible(false);
-		add(textField_inputCodeSecretAModif);
-		
-		lblCompteModifier = new JLabel("Compte \u00E0 modifier :");
-		lblCompteModifier.setBounds(261, 324, 134, 16);
-		lblCompteModifier.setVisible(false);
-		add(lblCompteModifier);
-		
-		lblRentrerModification = new JLabel("Rerentrer le compte \u00E0 droite avec les modifications");
-		lblRentrerModification.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblRentrerModification.setBounds(251, 412, 342, 20);
-		lblRentrerModification.setVisible(false);
-		add(lblRentrerModification);
 
 	}
 
@@ -334,7 +223,6 @@ public class MembrePanel extends JPanel {
 
 
 	public static JTable getModel() {
-		// TODO Auto-generated method stub
 		return table;
 	}
 
